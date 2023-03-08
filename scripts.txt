@@ -1,0 +1,7 @@
+//add logo
+ffmpeg -i output.mp4 -filter_complex "drawtext=text='Utopia':fontfile=dash/dash.otf:fontsize=50:x=15:y=15:fontcolor=white" -c:a copy out.mp4
+
+// concat 
+ffmpeg -f concat -safe 0 -i <(for f in *.mp4; do echo "file '$PWD/$f'"; done) -c copy output.mp4
+
+

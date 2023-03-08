@@ -1,0 +1,245 @@
+#!/usr/bin/env sh
+
+IN="dist/final_2023030619_48_52_.mp4"
+OUT="out.mp4"
+TEXT='hello
+world
+'
+T_COLOR=black
+T_FONT=sans
+T_POSITION=center
+T_SIZE=16
+T_ALPHA=1
+T_START=0
+T_END=0
+T_BOX=0
+T_BOX_COLOR=black
+T_BOX_ALPHA=1
+T_SHADOW_COLOR=black
+T_SHADOW_ALPHA=
+T_SHADOW_X=0
+T_SHADOW_Y=0
+RENDER=0
+FILTER_GRAPH=0
+
+TOP="x=(w-tw)/2:y=0"
+BOTTOM="x=(w-tw)/2:y=(h-th)"
+LEFT="x=0:y=(h-th)/2"
+RIGHT="x=(w-tw):y=(h-th)/2"
+CENTER="x=(w-tw)/2:y=(h-th)/2"
+
+get_enabled_arg() {
+    if [ $T_START -gt 0 ]; then
+        if [ $T_END -gt 0 ]; then
+            if [ $T_END -le $T_START ]; then
+                echo "Text ending time must be greater than text starting time"
+                exit 1
+            fi
+            echo "enable=between(t\,$T_START\,$T_END)"
+        else
+            echo "enable=gt(t\,$T_START)"
+        fi
+        # do expr instead of regular fontcolor
+    elif [ $T_END -gt 0 ]; then
+        echo "enable=lt(t\,$T_END)"
+    else
+        echo enable=1
+    fi
+}
+
+get_font_arg() {
+    if [ -f "$T_FONT" ]; then
+        echo "fontfile=$T_FONT"
+    else
+        echo "font=$T_FONT"
+    fi
+}
+
+get_text_arg() {
+    if [ -f $TEXT ]; then
+        echo textfile=$TEXT
+    else
+        echo text=$TEXT
+    fi
+}
+
+get_text_color_arg() {
+    echo fontcolor=$T_COLOR
+}
+
+get_text_size_arg() {
+    echo fontsize=$T_SIZE
+}
+
+get_text_alpha_arg() {
+    echo alpha=$T_ALPHA
+}
+
+get_text_position_arg() {
+    case $T_POSITION in
+        top)    echo $TOP;;
+        bottom) echo $BOTTOM;;
+        left)   echo $LEFT;;
+        right)  echo $RIGHT;;
+        center) echo $CENTER;;
+        *)      echo $CENTER;; # defaults to 'center' coordinates
+    esac
+}
+
+get_box_arg() {
+    echo box=$T_BOX
+}
+
+get_box_color_arg() {
+    echo boxcolor=$T_BOX_COLOR@$T_BOX_ALPHA
+}
+
+get_shadow_color_arg() {
+    if [ -z $T_SHADOW_ALPHA ]; then
+        T_SHADOW_ALPHA=$T_ALPHA
+    fi
+    echo shadowcolor=$T_SHADOW_COLOR@$T_SHADOW_ALPHA
+}
+
+get_shadow_offset_arg() {
+    echo shadowx=$T_SHADOW_X:shadowy=$T_SHADOW_Y
+}
+
+build_drawtext_filter() {
+    echo drawtext="$(get_font_arg):$(get_text_arg):$(get_text_color_arg):$(get_text_size_arg):$(get_text_alpha_arg):$(get_text_position_arg):$(get_box_arg):$(get_box_color_arg):$(get_shadow_color_arg):$(get_shadow_offset_arg):$(get_enabled_arg)"
+}
+
+render_text() {
+    if [ -z $OUT ]; then
+        echo "Cannot render without output path, use -o={PATH} or --output={PATH}"
+        exit 1
+    fi
+
+    ffmpeg -i $IN -vf "$(build_drawtext_filter)" -y $OUT
+    exit 0
+}
+
+preview_text() {
+    ffplay -i $IN -vf "$(build_drawtext_filter)"
+    exit 0
+}
+
+for arg
+do
+    case $arg in
+        -i=*|--input=*)
+            IN="${arg#*=}"
+            shift
+            ;;
+        -o=*|--output=*)
+            OUT="${arg#*=}"
+            shift
+            ;;
+        -t=*|--text=*)
+            TEXT="${arg#*=}"
+            shift
+            ;;
+        -tf=*|--text_font=*)
+            T_FONT="${arg#*=}"
+            shift
+            ;;
+        -ts=*|--text_size=*)
+            T_SIZE="${arg#*=}"
+            shift
+            ;;
+        -tc=*|--text_color=*)
+            T_COLOR="${arg#*=}"
+            shift
+            ;;
+        -tp=*|--text_position=*)
+            T_POSITION="${arg#*=}"
+            shift
+            ;;
+        -ta=*|--text_alpha=*)
+            T_ALPHA="${arg#*=}"
+            shift
+            ;;
+        -tst=*|--text_start_time=*)
+            T_START="${arg#*=}"
+            if [ $T_START -lt 0]; then
+                echo "Text start time (-tst|--text_start_time) must be 0 or greater"
+                exit 1
+            fi
+            shift
+            ;;
+        -tet=*|--text_end_time=*)
+            T_END="${arg#*=}"
+            echo "Video Duration: $DURATION"
+            if [ $T_END -ge $DURATION ]; then
+                echo "Text end time (-tet|--text_end_time) must be less than the duration of the video"
+                exit 1
+            fi
+            shift
+            ;;
+        -tb|--text_box)
+            T_BOX=1
+            shift
+            ;;
+        -tbc=*|--text_box_color=*)
+            T_BOX_COLOR=${arg#*=}
+            shift
+            ;;
+        -tba=*|--text_box_alpha=*)
+            T_BOX_ALPHA=${arg#*=}
+            shift
+            ;;
+        -tsc=*|--text_shadow_color=*)
+            T_SHADOW_COLOR=${arg#*=}
+            shift
+            ;;
+        -tsa=*|--text_shadow_alpha=*)
+            T_SHADOW_ALPHA=${arg#*=}
+            shift
+            ;;
+        -tsx=*|--text_shadow_x=*)
+            T_SHADOW_X=${arg#*=}
+            shift
+            ;;
+        -tsy=*|--text_shadow_y=*)
+            T_SHADOW_Y=${arg#*=}
+            shift
+            ;;
+        -r|--render)
+            RENDER=1
+            shift
+            ;;
+        -fg|--filter_graph)
+            FILTERGRAPH=1
+            shift
+            ;;
+        *)
+            # ignore extra args
+            shift
+            ;;
+    esac
+done
+
+if [ -z $TEXT ]; then
+    echo "Must indicate what text to draw onto the video, use -t={TEXT} or --text={TEXT}"
+    exit 1
+fi
+
+# This is in case I just want to generate a filter graph node
+# for use in a complex filter graph
+# instead of running ffmpeg or ffplay directly
+if [ $FILTERGRAPH -eq 1 ]; then
+    echo $(build_drawtext_filter)
+    exit 0
+fi
+
+if [ -z $IN ]; then
+    echo "Input file is required, pass in with -i={FILE} or --input={FILE}"
+    exit 1
+fi
+
+case $RENDER in
+    0) preview_text;;
+    1) render_text ;;
+    *) preview_text;;
+esac
+

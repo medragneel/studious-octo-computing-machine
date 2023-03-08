@@ -1,0 +1,13 @@
+
+#!/bin/sh
+DS=1.0 # display start
+DE=4.5 # display end
+FID=1.5 # fade in duration
+FOD=1.5 # fade out duration
+music = "intro.mp3"
+
+# Generate a video with text that fades in and out
+ffmpeg -f lavfi -i "color=s=1440x796,drawtext=text=Utopia:x=(w-tw)/2:y=(h-th)/2:fontsize=100:fontfile=dash/dash.otf:fontcolor_expr=ffffff%{eif\\\\:clip(255*(1*between(t\\,${DS}+${FID}\\,${DE}-${FOD})+((t-${DS})/${FID})*between(t\\,${DS}\\,${DS}+${FID})+(-(t-${DE})/${FOD})*between(t\\,${DE}-${FOD}\\,${DE}))\\,0\\,255)\\\\:x\\\\:2}" -t 5 intro.mp4 -y -hide_banner
+
+# Play the generated video in VLC
+# vlc intro.mp4
