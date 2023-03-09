@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Check if the required arguments are provided
+if [ $# -lt 4 ]; then
+    echo "Usage: $0 input_file output_file start_time end_time"
+    exit 1
+fi
+
+# Get input arguments
+input_file="$1"
+output_file="$2"
+start_time="$3"
+end_time="$4"
+
+# Use ffmpeg to cut the video
+ffmpeg -i "$input_file" -ss "$start_time" -to "$end_time" -c:v copy -c:a copy "$output_file"
+

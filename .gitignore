@@ -1,0 +1,10 @@
+dist/
+dist/*
+src/
+src/*
+exported/
+exported/*
+music/
+music/*
+shorts/
+shorts/*
