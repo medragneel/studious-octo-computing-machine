@@ -6,7 +6,7 @@ from datetime import datetime
 # Set the path to the folder containing the videos
 path_to_folder = "./shorts"
 dt = datetime.now().strftime("%Y%m%d%H:%M:%S").replace(":","_")
-savetitle = f"./dist/final_short_{dt}_.mp4"
+savetitle = f"./exported/short_{dt}_.mp4"
 
 # Get a list of all the videos in the folder
 videos = [os.path.join(path_to_folder, f) for f in os.listdir(path_to_folder) if f.endswith('.mp4')]

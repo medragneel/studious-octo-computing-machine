@@ -1,12 +1,17 @@
 import moviepy.editor as mpy
-from moviepy.video.fx.colorx import colorx
+# from moviepy.video.fx.colorx import colorx
 from moviepy.video.fx.rotate import rotate
+from moviepy.video.fx.speedx import speedx
 from moviepy.video.fx.lum_contrast import lum_contrast
+from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from datetime import datetime
 import random
 import sys
+import argparse
 
 
+parser=argparse.ArgumentParser(description='just a test')
+parser.add_argument('-t','--transpose',help='rotate the video')
 
 vcodec =   "libx264"
 
@@ -30,10 +35,10 @@ savetitle = f"./dist/final_{dt}_.mp4"
 
 
 length = 5
-cycle = 10
+cycle = 11
 
 def getrandomDuration(duration):
-    start = round(random.uniform(0,duration-length), 2)
+    start = round(random.uniform(0,duration-length), 1)
     end = start + length
     return start,end
 
@@ -57,20 +62,34 @@ def edit_video(loadtitle, savetitle, cuts):
     clips = [ video.subclip(cut[0],cut[1]) for cut in cts]
 
     #final clip
+
     final_clip = mpy.concatenate_videoclips(clips)\
-    .fx(lum_contrast,lum=0.8,contrast =0.5)\
-    # .fx(rotate,270)
+        .fx(lum_contrast,lum=0.8,contrast =0.5)\
+        .fx(speedx,1.1)\
+        .fx(rotate,270)\
+
     # add audio to clips
     audio = mpy.AudioFileClip(music)
 
     new_audioclip = mpy.CompositeAudioClip([audio])
     final_clip.audio = new_audioclip.set_duration(final_clip.duration)
+    final_clip.audio = new_audioclip.fx(audio_fadeout, duration=2.0)
+
+
+    logo = mpy.TextClip("Utopia", fontsize=50, color='white', font='./painted_lady/Painted Lady.otf')\
+            .set_position((40,40))\
+            .set_opacity(0.7)\
+            .set_duration(final_clip.duration)\
+
+    final = mpy.CompositeVideoClip([final_clip,logo])
+
+
 
 
 
 
     # # save file
-    final_clip.write_videofile(savetitle,
+    final.write_videofile(savetitle,
                                threads=4,
                                fps=24,
                                codec=vcodec,

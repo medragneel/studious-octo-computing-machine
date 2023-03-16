@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Playlist</title>
+	<trackList>
+		<track>
+			<location>file:///home/mshadow/Downloads/%5BJudas%5D%20Megalo%20Box%20%28Season%201%29%20%5BBD%201080p%5D%5BHEVC%20x265%2010bit%5D%5BDual-Audio%5D%5BEng-Subs%5D/%5BJudas%5D%20Megalo%20Box%20-%2001.mkv</location>
+			<duration>1447841</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+				<vlc:option>bookmarks={name=[Judas] Megalo Box - 01.mkv #0,time=503.885},{name=[Judas] Megalo Box - 01.mkv #1,time=772.612},{name=[Judas] Megalo Box - 01.mkv #2,time=1118.541},{name=[Judas] Megalo Box - 01.mkv #3,time=1342.724}</vlc:option>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:item tid="0"/>
+	</extension>
+</playlist>
