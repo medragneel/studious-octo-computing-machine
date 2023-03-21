@@ -8,3 +8,9 @@ music/
 music/*
 shorts/
 shorts/*
+
+*.mp3
+*.wav
+*.mp4
+*.srt
+*.xspf

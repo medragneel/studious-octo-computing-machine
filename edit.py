@@ -1,4 +1,5 @@
 import moviepy.editor as mpy
+from moviepy.video.tools.subtitles import SubtitlesClip
 # from moviepy.video.fx.colorx import colorx
 from moviepy.video.fx.rotate import rotate
 from moviepy.video.fx.speedx import speedx
@@ -7,11 +8,9 @@ from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from datetime import datetime
 import random
 import sys
-import argparse
 
 
-parser=argparse.ArgumentParser(description='just a test')
-parser.add_argument('-t','--transpose',help='rotate the video')
+font_family =  './painted_lady/Painted Lady.otf'
 
 vcodec =   "libx264"
 
@@ -24,27 +23,14 @@ music = sys.argv[2]
 title = sys.argv[1]
 dt = datetime.now().strftime("%Y%m%d%H:%M:%S").replace(":","_")
 savetitle = f"./dist/final_{dt}_.mp4"
-
-# modify these start and end times for your subclips
-# cuts = [('00:00:10.949', '00:00:20.152'),
-#         ('00:02:06.328', '00:02:13.077') ,
-#         ('00:03:06.328', '00:03:13.077') ,
-#         ('00:05:06.328', '00:05:13.077') ,
-#         ('00:04:06.328', '00:04:13.077') ,
-#         ]
-
-
 length = 5
 cycle = 11
+
 
 def getrandomDuration(duration):
     start = round(random.uniform(0,duration-length), 1)
     end = start + length
     return start,end
-
-
-# Define a function to apply a random effect to the clip
-
 
 cuts = []
 
@@ -64,9 +50,9 @@ def edit_video(loadtitle, savetitle, cuts):
     #final clip
 
     final_clip = mpy.concatenate_videoclips(clips)\
-        .fx(lum_contrast,lum=0.8,contrast =0.5)\
-        .fx(speedx,1.1)\
-        .fx(rotate,270)\
+          .fx(speedx,1.1)\
+        # .fx(lum_contrast,lum=1.1,contrast =0.5)\
+        # .fx(rotate,270)\
 
     # add audio to clips
     audio = mpy.AudioFileClip(music)
@@ -76,12 +62,31 @@ def edit_video(loadtitle, savetitle, cuts):
     final_clip.audio = new_audioclip.fx(audio_fadeout, duration=2.0)
 
 
-    logo = mpy.TextClip("Utopia", fontsize=50, color='white', font='./painted_lady/Painted Lady.otf')\
+    logo = mpy.TextClip("Utopia", fontsize=30, color='white', font=font_family)\
             .set_position((40,40))\
             .set_opacity(0.7)\
-            .set_duration(final_clip.duration)\
+            .set_duration(final_clip.duration)
 
-    final = mpy.CompositeVideoClip([final_clip,logo])
+    # intro = mpy.TextClip("Utopia", fontsize=90, color='white', font=font_family)\
+    #         .set_position(('center','center'))\
+    #         .set_opacity(0.7)\
+    #         .set_duration(1.0)\
+    #         .rotate(10)
+
+    generator = lambda txt: mpy.TextClip(txt, \
+                                 font =font_family, \
+                                  fontsize=35, \
+                                  color='white', \
+                                  kerning=2,\
+                                  interline=8,\
+                                  )
+    print(generator)
+
+
+    subtitles = SubtitlesClip('./d.srt',generator).set_position(('center','center'))
+
+    final = mpy.CompositeVideoClip([final_clip,logo,subtitles])
+    # final = mpy.CompositeVideoClip([final_clip,logo])
 
 
 
