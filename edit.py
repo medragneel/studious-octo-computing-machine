@@ -10,7 +10,7 @@ import random
 import sys
 
 
-font_family =  './painted_lady/Painted Lady.otf'
+font_family =  './fonts/Painted Lady.otf'
 
 vcodec =   "libx264"
 
@@ -73,20 +73,20 @@ def edit_video(loadtitle, savetitle, cuts):
     #         .set_duration(1.0)\
     #         .rotate(10)
 
-    generator = lambda txt: mpy.TextClip(txt, \
-                                 font =font_family, \
-                                  fontsize=35, \
-                                  color='white', \
-                                  kerning=2,\
-                                  interline=8,\
-                                  )
-    print(generator)
-
-
-    subtitles = SubtitlesClip('./d.srt',generator).set_position(('center','center'))
-
-    final = mpy.CompositeVideoClip([final_clip,logo,subtitles])
-    # final = mpy.CompositeVideoClip([final_clip,logo])
+    # generator = lambda txt: mpy.TextClip(txt, \
+    #                              font =font_family, \
+    #                               fontsize=35, \
+    #                               color='white', \
+    #                               kerning=2,\
+    #                               interline=8,\
+    #                               )
+    # print(generator)
+    #
+    #
+    # subtitles = SubtitlesClip('./d.srt',generator).set_position(('center','center'))
+    #
+    # final = mpy.CompositeVideoClip([final_clip,logo,subtitles])
+    final = mpy.CompositeVideoClip([final_clip,logo])
 
 
 
