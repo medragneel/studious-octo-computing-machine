@@ -5,7 +5,7 @@ ffmpeg -i output.mp4 -filter_complex "drawtext=text='Utopia':fontfile=dash/dash.
 ffmpeg -f concat -safe 0 -i <(for f in *.mp4; do echo "file '$PWD/$f'"; done) -c copy output.mp4
 
 //crop
- ffmpeg -i src/ft_gva.mp4 -filter:v "crop=in_w:in_h-220:0:0" -c:a copy output_ft.mp4
+ ffmpeg -i dist/final_2023032517_07_10_.mp4 -filter:v "crop=in_w:in_h-220:0:0" -c:a copy output_ft.mp4
  
  // resize
  ffmpeg -i src/davis.mp4 -filter_complex "scale=-1:1920,crop='min(1080,1*ih)':'min(iw/1,ih)'" -c:a copy render.mp4

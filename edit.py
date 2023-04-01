@@ -36,7 +36,7 @@ cuts = []
 
 def edit_video(loadtitle, savetitle, cuts):
     # load file
-    video = mpy.VideoFileClip(loadtitle)
+    video = mpy.VideoFileClip(loadtitle,audio=True)
     #list of random cuts
     for _ in range(cycle):
         cuts.append(getrandomDuration(video.duration))
@@ -50,9 +50,9 @@ def edit_video(loadtitle, savetitle, cuts):
     #final clip
 
     final_clip = mpy.concatenate_videoclips(clips)\
-          .fx(speedx,1.1)\
+          .fx(speedx,1.2)\
+          .fx(rotate,270)\
         # .fx(lum_contrast,lum=1.1,contrast =0.5)\
-        # .fx(rotate,270)\
 
     # add audio to clips
     audio = mpy.AudioFileClip(music)

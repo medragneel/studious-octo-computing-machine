@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Help function to display usage
+function usage() {
+    echo "Usage: $(basename "$0") -s <start time> -e <end time> -u <video URL>"
+    echo "Example: $(basename "$0") -s 00:41:21.00 -e 00:41:31.00 -u 'https://www.youtube.com/watch?v=dqvPzbO__bQ&ab_channel=RodjaTV'"
+}
+
+# Parse command line arguments
+while getopts "s:e:u:" opt; do
+    case $opt in
+        s) start_time="$OPTARG";;
+        e) end_time="$OPTARG";;
+        u) url="$OPTARG";;
+        *) usage; exit 1;;
+    esac
+done
+
+# Check that all arguments are provided
+if [[ -z "${start_time:-}" || -z "${end_time:-}" || -z "${url:-}" ]]; then
+    usage
+    exit 1
+fi
+
+# Download the video using yt-dlp
+yt-dlp --downloader ffmpeg --downloader-args "ffmpeg_i:-ss ${start_time} -to ${end_time}" --no-check-certificate "${url}"
+

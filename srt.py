@@ -4,7 +4,7 @@ import datetime
 import sys
 
 # Load the audio file
-sound = AudioSegment.from_wav(sys.argv[1])
+sound = AudioSegment.from_mp3(sys.argv[1])
 
 # Set the duration of each subtitle in seconds
 subtitle_duration = 1

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Parse command line arguments
+if [[ $# -ne 3 ]]; then
+    echo "Usage: $0 <start time> <end time> <video URL>"
+    exit 1
+fi
+
+start_time="$1"
+end_time="$2"
+url="$3"
+
+# Download the video using yt-dlp
+yt-dlp --downloader ffmpeg --downloader-args "ffmpeg_i:-ss ${start_time} -to ${end_time}" --no-check-certificate "${url}"
+
