@@ -5,6 +5,7 @@ from moviepy.video.fx.rotate import rotate
 from moviepy.video.fx.speedx import speedx
 from moviepy.video.fx.lum_contrast import lum_contrast
 from moviepy.audio.fx.audio_fadeout import audio_fadeout
+from moviepy.audio.fx.audio_fadein import audio_fadein
 from datetime import datetime
 import random
 import sys
@@ -14,17 +15,17 @@ font_family =  './fonts/Painted Lady.otf'
 
 vcodec =   "libx264"
 
-videoquality = "24"
+videoquality = "20"
 
 # slow, ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow
-compression = "veryfast"
+compression = "ultrafast"
 
 music = sys.argv[2]
 title = sys.argv[1]
 dt = datetime.now().strftime("%Y%m%d%H:%M:%S").replace(":","_")
 savetitle = f"./dist/final_{dt}_.mp4"
 length = 5
-cycle = 11
+cycle = 7
 
 
 def getrandomDuration(duration):
@@ -52,14 +53,15 @@ def edit_video(loadtitle, savetitle, cuts):
     final_clip = mpy.concatenate_videoclips(clips)\
           .fx(speedx,1.2)\
           .fx(rotate,270)\
-        # .fx(lum_contrast,lum=1.1,contrast =0.5)\
+        .fx(lum_contrast,lum=1.1,contrast =0.5)\
 
     # add audio to clips
     audio = mpy.AudioFileClip(music)
 
     new_audioclip = mpy.CompositeAudioClip([audio])
     final_clip.audio = new_audioclip.set_duration(final_clip.duration)
-    final_clip.audio = new_audioclip.fx(audio_fadeout, duration=2.0)
+    final_clip.audio = new_audioclip.fx(audio_fadein, duration=2.0)
+    final_clip.audio = new_audioclip.fx(audio_fadeout, duration=1.0)
 
 
     logo = mpy.TextClip("Utopia", fontsize=30, color='white', font=font_family)\
@@ -75,15 +77,15 @@ def edit_video(loadtitle, savetitle, cuts):
 
     # generator = lambda txt: mpy.TextClip(txt, \
     #                              font =font_family, \
-    #                               fontsize=35, \
+    #                              fontsize=15,\
     #                               color='white', \
-    #                               kerning=2,\
-    #                               interline=8,\
+    #                               # kerning=2,\
+    #                               # interline=8,\
     #                               )
     # print(generator)
     #
     #
-    # subtitles = SubtitlesClip('./d.srt',generator).set_position(('center','center'))
+    # subtitles = SubtitlesClip('./mt.srt',generator).set_position(('center','center'))
     #
     # final = mpy.CompositeVideoClip([final_clip,logo,subtitles])
     final = mpy.CompositeVideoClip([final_clip,logo])

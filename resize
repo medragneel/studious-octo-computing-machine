@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if input file path is provided
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <input_file_path>"
+  exit 1
+fi
+
+# Get input file path from command line argument
+input_file="$1"
+
+# Check if input file exists
+if [[ ! -f "$input_file" ]]; then
+  echo "Input file not found: $input_file"
+  exit 1
+fi
+
+# Get input file name without extension
+input_filename=$(basename "$input_file")
+input_filename="${input_filename%.*}"
+
+# Set output file name with input file name
+output_file="resized_${input_filename}.mp4"
+
+# Execute FFmpeg command
+ffmpeg -i "$input_file" -filter_complex "scale=-1:1920,crop='min(1080,1*ih)':'min(iw/1,ih)'" -c:a copy "$output_file"
+
