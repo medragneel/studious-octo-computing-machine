@@ -3,7 +3,7 @@ from moviepy.video.tools.subtitles import SubtitlesClip
 # from moviepy.video.fx.colorx import colorx
 from moviepy.video.fx.rotate import rotate
 from moviepy.video.fx.speedx import speedx
-from moviepy.video.fx.lum_contrast import lum_contrast
+# from moviepy.video.fx.lum_contrast import lum_contrast
 from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from moviepy.audio.fx.audio_fadein import audio_fadein
 from datetime import datetime
@@ -12,13 +12,14 @@ import sys
 
 
 font_family =  './fonts/Painted Lady.otf'
+subs='./ads.srt'
 
 vcodec =   "libx264"
 
-videoquality = "20"
+videoquality = "24"
 
 # slow, ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow
-compression = "ultrafast"
+compression = "superfast"
 
 music = sys.argv[2]
 title = sys.argv[1]
@@ -53,7 +54,8 @@ def edit_video(loadtitle, savetitle, cuts):
     final_clip = mpy.concatenate_videoclips(clips)\
           .fx(speedx,1.2)\
           .fx(rotate,270)\
-        .fx(lum_contrast,lum=1.1,contrast =0.5)\
+          # .fx(blackwhite,preserve_luminosity=True)\
+        # .fx(lum_contrast,lum=1.1,contrast =0.5)\
 
     # add audio to clips
     audio = mpy.AudioFileClip(music)
@@ -76,8 +78,8 @@ def edit_video(loadtitle, savetitle, cuts):
     #         .rotate(10)
 
     # generator = lambda txt: mpy.TextClip(txt, \
-    #                              font =font_family, \
-    #                              fontsize=15,\
+    #                              font ="./fonts/roboto.ttf", \
+    #                              fontsize=18,\
     #                               color='white', \
     #                               # kerning=2,\
     #                               # interline=8,\
@@ -85,7 +87,7 @@ def edit_video(loadtitle, savetitle, cuts):
     # print(generator)
     #
     #
-    # subtitles = SubtitlesClip('./mt.srt',generator).set_position(('center','center'))
+    # subtitles = SubtitlesClip(subs,generator).set_position(('center','center'))
     #
     # final = mpy.CompositeVideoClip([final_clip,logo,subtitles])
     final = mpy.CompositeVideoClip([final_clip,logo])

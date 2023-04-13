@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Check if yt-dlp is installed
+if ! type "yt-dlp" > /dev/null 2>&1; then
+    echo "yt-dlp is not installed. Please install yt-dlp before running this script."
+    exit 1
+fi
+
+# Prompt user for YouTube URL
+read -p "Enter YouTube URL: " youtube_url
+
+# Prompt user for output directory
+read -p "Enter output directory (default: current directory): " output_dir
+output_dir=${output_dir:-.}
+
+# Prompt user for file format
+read -p "Enter file format (default: mp3): " file_format
+file_format=${file_format:-mp3}
+
+# Prompt user for additional options
+read -p "Enter additional options (default: none): " additional_options
+additional_options=${additional_options:-""}
+
+# Construct yt-dlp command with user inputs
+command="yt-dlp -f 'ba' -x --audio-format $file_format -o '$output_dir/%(title)s.%(ext)s' $additional_options $youtube_url"
+
+# Print the command for user confirmation
+echo "The following command will be executed:"
+echo $command
+
+# Prompt user for confirmation to proceed
+read -p "Do you want to proceed? (y/n): " confirm
+if [[ $confirm == "y" || $confirm == "Y" ]]; then
+    # Execute the yt-dlp command
+    eval $command
+    echo "Download completed!"
+else
+    echo "Aborted by user."
+fi
+
+

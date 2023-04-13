@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Check if number of arguments is valid
+if [[ $# -ne 3 ]]; then
+  echo "Invalid number of arguments. Usage: $0 <input_video> <input_music> <text>"
+  exit 1
+fi
+
+# Input arguments
+input_file="$1"
+input_music="$2"
+text="$3"
+output_file="final_$(date +%Y%m%d_%H%M%S).mp4"
+
+# Check if input video file exists
+if [[ ! -f "$input_file" ]]; then
+  echo "Input video file does not exist: $input_file"
+  exit 1
+fi
+
+# Check if input music file exists
+if [[ ! -f "$input_music" ]]; then
+  echo "Input music file does not exist: $input_music"
+  exit 1
+fi
+
+# Resize and crop the input video
+temp_file="temp.mp4"
+ffmpeg -i "$input_file" -filter_complex "scale=-1:1920,crop='min(1080,1*ih)':'min(iw/1,ih)'" -c:a copy "$temp_file"
+
+resized="resized.mp4"
+# Add background music to the resized and cropped video
+ffmpeg -i "$temp_file" -i "$input_music" -filter_complex "[0:v]setpts=PTS-STARTPTS[v];[1:a]adelay=0|0[a];[v][a]concat=n=1:v=1:a=1[outv][outa]" -map "[outv]" -map "[outa]" "$resized"
+
+# Add text overlay to the output video with newlines after every three words
+text_with_newlines=$(echo "$text" | sed -r 's/((\S+\s+){7}\S+)/\1\n/g')
+ffmpeg -i "$resized" -vf "drawtext=text='$text_with_newlines':x=(w-text_w)/2:y=(h-text_h)/2:fontsize=40:fontfile='./fonts/roboto.ttf':fontcolor=white" "$output_file"
+
+# Clean up temporary file
+rm "$temp_file"
+rm "$resized"
+
+echo "Video with text overlay, resized and cropped video, and background music has been created: $output_file"
+

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Check if number of arguments is correct
+if [ "$#" -ne 3 ]; then
+  echo "Error: Incorrect number of arguments."
+  echo "Usage: $0 <input_file> <output_file> <filter_number>"
+  exit 1
+fi
+
+# Input file path
+input_file="$1"
+# Output file path
+output_file="$2"
+# Crop filter number
+crop_filter_num="$3"
+
+# Crop filter command based on filter number
+case $crop_filter_num in
+  1)
+    crop_filter="crop=in_w:in_h-240:0:10"
+    ;;
+  2)
+    crop_filter="crop=in_w:in_h*0.9"
+    ;;
+  *)
+    echo "Error: Invalid filter number. Choose 1 or 2."
+    exit 1
+    ;;
+esac
+
+# Run ffmpeg with input file, crop filter, and output file
+ffmpeg -i "$input_file" -filter:v "$crop_filter" -c:a copy "$output_file"
+
