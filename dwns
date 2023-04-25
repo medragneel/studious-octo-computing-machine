@@ -10,8 +10,8 @@ fi
 read -p "Enter YouTube URL: " youtube_url
 
 # Prompt user for output directory
-read -p "Enter output directory (default: current directory): " output_dir
-output_dir=${output_dir:-.}
+read -p "Enter output directory (default: music directory): " output_dir
+output_dir=${output_dir:-./music}
 
 # Prompt user for file format
 read -p "Enter file format (default: mp3): " file_format

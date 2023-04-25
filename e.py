@@ -3,6 +3,7 @@ from moviepy.video.tools.subtitles import SubtitlesClip
 # from moviepy.video.fx.colorx import colorx
 from moviepy.video.fx.speedx import speedx
 from moviepy.video.fx.blackwhite import blackwhite
+from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from moviepy.audio.fx.audio_fadein import audio_fadein
 from datetime import datetime
 import random
@@ -10,11 +11,12 @@ import sys
 
 
 font_family =  './fonts/Painted Lady.otf'
-subs='./ads.srt'
+
+subs= sys.argv[3]
 
 vcodec =   "libx264"
 
-videoquality = "24"
+videoquality = "30"
 
 # slow, ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow
 compression = "superfast"
@@ -50,8 +52,8 @@ def edit_video(loadtitle, savetitle, cuts):
     #final clip
 
     final_clip = mpy.concatenate_videoclips(clips)\
-          .fx(speedx,1.2)\
-          .fx(blackwhite,preserve_luminosity=True)\
+           .fx(speedx,1.2)\
+           .fx(blackwhite,preserve_luminosity=True)\
           # .fx(rotate,270)\
         # .fx(lum_contrast,lum=1.1,contrast =0.5)\
 

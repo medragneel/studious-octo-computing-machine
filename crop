@@ -17,7 +17,7 @@ crop_filter_num="$3"
 # Crop filter command based on filter number
 case $crop_filter_num in
   1)
-    crop_filter="crop=in_w:in_h-240:0:10"
+    crop_filter="crop=in_w:in_h-210:0:10"
     ;;
   2)
     crop_filter="crop=in_w:in_h*0.9"

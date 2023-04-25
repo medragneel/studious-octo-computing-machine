@@ -34,7 +34,7 @@ ffmpeg -i "$temp_file" -i "$input_music" -filter_complex "[0:v]setpts=PTS-STARTP
 
 # Add text overlay to the output video with newlines after every three words
 text_with_newlines=$(echo "$text" | sed -r 's/((\S+\s+){7}\S+)/\1\n/g')
-ffmpeg -i "$resized" -vf "drawtext=text='$text_with_newlines':x=(w-text_w)/2:y=(h-text_h)/2:fontsize=40:fontfile='./fonts/roboto.ttf':fontcolor=white" "$output_file"
+ffmpeg -i "$resized" -vf "drawtext=text='$text_with_newlines':x=(w-text_w)/2:y=(h-text_h)/2:fontsize=50:fontfile='./fonts/bison.ttf':fontcolor=white" "$output_file"
 
 # Clean up temporary file
 rm "$temp_file"

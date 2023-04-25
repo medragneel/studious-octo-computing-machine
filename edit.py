@@ -16,7 +16,7 @@ subs='./ads.srt'
 
 vcodec =   "libx264"
 
-videoquality = "24"
+videoquality = "30"
 
 # slow, ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow
 compression = "superfast"

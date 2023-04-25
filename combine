@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Function to display usage message
+display_usage() {
+    echo "Usage: $0 <input_video> <input_subtitle> <output_video>"
+}
+
+# Check if the correct number of arguments is provided
+if [ "$#" -ne 3 ]; then
+    echo "Error: Incorrect number of arguments"
+    display_usage
+    exit 1
+fi
+
+# Input video file path
+input_video="$1"
+
+# Input subtitle file path
+input_subtitle="$2"
+
+# Output video file path
+output_video="$3"
+
+# Check if input video file exists
+if [ ! -f "$input_video" ]; then
+    echo "Error: Input video file does not exist"
+    display_usage
+    exit 1
+fi
+
+# Check if input subtitle file exists
+if [ ! -f "$input_subtitle" ]; then
+    echo "Error: Input subtitle file does not exist"
+    display_usage
+    exit 1
+fi
+
+# Run ffmpeg command to combine video with subtitles
+ffmpeg -i "$input_video" -vf "subtitles='$input_subtitle':force_style='Fontsize=15,Fontname=Arial,PrimaryColour=&Hffffff&,SecondaryColour=&Hffffff&,OutlineColour=&H000000&,BackColour=&H000000&,Alignment=10'" -c:v libx264 -crf 18 -c:a copy "$output_video"
+
+echo "Completed! Video with subtitles is saved as $output_video"
+

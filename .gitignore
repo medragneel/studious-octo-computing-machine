@@ -9,6 +9,8 @@ music/*
 shorts/
 shorts/*
 fonts/*
+sorted/*
+sorted_music/*
 
 *.mp3
 *.wav
