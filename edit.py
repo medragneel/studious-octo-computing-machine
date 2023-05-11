@@ -47,11 +47,11 @@ def edit_video(loadtitle, savetitle, cuts):
     print(cuts)
 
     #list of clips
-    clips = [ video.subclip(cut[0],cut[1]) for cut in cts]
+    clips = [ video.subclip(cut[0],cut[1]).crossfadein(1) for cut in cts]
 
     #final clip
 
-    final_clip = mpy.concatenate_videoclips(clips)\
+    final_clip = mpy.concatenate_videoclips(clips,method="compose")\
           .fx(speedx,1.2)\
           .fx(rotate,270)\
           # .fx(blackwhite,preserve_luminosity=True)\
@@ -91,6 +91,7 @@ def edit_video(loadtitle, savetitle, cuts):
     #
     # final = mpy.CompositeVideoClip([final_clip,logo,subtitles])
     final = mpy.CompositeVideoClip([final_clip,logo])
+    final.set_fps(30)
 
 
 
@@ -100,7 +101,7 @@ def edit_video(loadtitle, savetitle, cuts):
     # # save file
     final.write_videofile(savetitle,
                                threads=4,
-                               fps=24,
+                               fps=30,
                                codec=vcodec,
                                preset=compression,
                                ffmpeg_params=["-crf",videoquality])
