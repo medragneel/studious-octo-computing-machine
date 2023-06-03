@@ -2,7 +2,7 @@ import os
 import sys
 import shutil
 
-index=0
+index= int(sys.argv[2])
 
 def path(dr, f): return os.path.join(dr, f)
 
