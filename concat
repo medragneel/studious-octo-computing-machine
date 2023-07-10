@@ -1,0 +1,339 @@
+#!/bin/bash
+# ffconcat v0.3
+# @author Arzet Ro, 2021 <arzeth0@gmail.com>
+# @license CC-0 (Public Domain)
+
+function usage ()
+{
+    echo "\
+ffconcat's usage:
+    ffconcat (anyFfmpegInputOptions) -i /tmp/a.mp4 -i ... -i ... /tmp/out.mp4 (anyFfmpegOutputOptions)
+    ffconcat -vn /tmp/a.mp4 /tmp/b.opus /tmp/out.mp4 -y
+    ffconcat -http -i https://a/h264@720p@25fps+opus.mp4 -i ftp://127.0.0.1/h264@720p@30fps+opus.mp4 -i /tmp/c.opus /tmp/out.mkv
+    ffconcat -http -i https://a/vp9@1080p@30fps+opus.mp4 -i ftp://127.0.0.1/vp9@720p@30fps+opus.mp4 -i /tmp/c.opus /tmp/out.mp4
+    WARNING: ffconcat uses `concat` demuxer; when
+    using both this demuxer AND -y, FFmpeg doesn't check if
+    an input file and output file
+    are the same file, so your 100 GB input file
+    could immediately become 10 KB.
+    ffconcat checks that only when neither -i
+    nor new FFmpeg release's boolean args (see valuelessFfmpegArgs in the code)
+    are specified.
+
+    ffmpeg has no -http.
+    ffconcat has -http because ffmpeg automatically
+    sets allowed protocols depending on -f and -i.
+    But when -f concat, ffmpeg doesn't know what to do with -i.
+
+    ffmpeg and mpv support VP9+Opus in .mp4
+    Only one video codec is possible in an output file.
+    You can't have both AAC and Opus in one .mp4 (not sure about other containers).
+    If you combine VP9 videos, then make sure they have the same FPS.
+    If you combine H264 videos of different resolutions,
+    then you get A/V desync
+    and also either
+    1) the start of video streams after the first video stream are cut
+    2) or video player freezes for 5 seconds when switching between video streams.
+    Also it seems if DAR (display aspect ratio) differs (at least in H.264)
+    then incorrect (5x longer) duration is estimated
+    and mpv displays the second video with 1 FPS.
+    You can see the info about an input file
+    with
+    mediainfo file.mp4
+    or
+    ffprobe -hide_banner -protocol_whitelist file,rtp,udp -show_streams file.mp4"
+}
+
+# Configuration [begin]
+forceRequireIArgumentForInputFiles=0
+# Configuration [end]
+
+
+
+
+in_array ()
+{
+    local e match="$1"
+    shift
+    for e; do [[ "$e" == "$match" ]] && return 0; done
+    return 1
+}
+
+if [[ "$#" == 0 ]]
+then
+    usage
+    exit
+fi
+
+requireIArgumentForInputFiles=0
+if in_array "--help" "$@"
+then
+    usage
+    exit
+elif in_array "-help" "$@"
+then
+    usage
+    exit
+elif in_array "-i" "$@"
+then
+    requireIArgumentForInputFiles=1
+elif [[ "$forceRequireIArgumentForInputFiles" == "1" ]]
+then
+    >&2 echo "forceRequireIArgumentForInputFiles=1, so you need -i"
+    usage
+    exit 1
+fi
+
+
+
+
+NL=$'\n'
+inputOptions=()
+outputOptions=()
+inputFilesRawArray=()
+outputFile=""
+
+declare -a valuelessFfmpegArgs=("-http"     "-hide_banner" "-dn" "-n" "-y" "-vn" "-an" "-autorotate" "-noautorotate" "-autoscale" "-noautoscale" "-stats" "-nostats" "-stdin" "-nostdin" "-ilme" "-vstats" "-psnr" "-qphist" "-hwaccels" "-sn" "-fix_sub_duration" "-ignore_unknown" "-copy_unknown" "-benchmark" "-benchmark_all" "-dump" "-hex" "-re" "-copyts" "-start_at_zero" "-shortest" "-accurate_seek" "-noaccurate_seek" "-seek_timestamp"     "write_id3v2" "write_apetag" "write_mpeg2" "ignore_loop" "skip_rate_check" "no_resync_search" "export_xmp")
+#^ used when requireIArgumentForInputFiles=0
+# TODO: fill all the args
+# grep -C 3 AV_OPT_TYPE_BOOL libavformat/ libavcodec/
+# grep -C 3 OPT_BOOL fftools/
+# Unfortunately, unlike MPV, FFmpeg neither
+# requires nor supports `=`, i.e. `--y --i=file.mp4'
+# instead of `-y -i file.mp4`.
+# Which means it's unclear whether an argument
+# is a value of an argument or an input/output file.
+
+areFfmpegArgsAllowed=1
+isHttpMode=0
+
+if in_array "-http" "$@"
+then
+    isHttpMode=1
+fi
+
+
+# if an argument is not a boolean argument, then what key needs a value
+secondArgumentIsWantedByThisFirstArgument=""
+# if requireIArgumentForInputFiles=1
+# then secondArgumentIsWantedByThisFirstArgument must be either "" or "-i"
+isCurrentArgumentI=0
+localRawFilesArray=()
+outputFile=""
+for arg in "$@"
+do
+    if [[
+        "$secondArgumentIsWantedByThisFirstArgument" == ""
+        &&
+        "$arg" == "-http"
+    ]]
+    then
+        continue
+    fi
+    if [[ "$arg" == "--" ]]
+    then
+        areFfmpegArgsAllowed=0
+        continue
+    fi
+    if [[
+        (
+            "$areFfmpegArgsAllowed" == "1"
+            ||
+            "$secondArgumentIsWantedByThisFirstArgument" != ""
+        )
+        && !(
+            "$requireIArgumentForInputFiles" == "1"
+            &&
+            "$secondArgumentIsWantedByThisFirstArgument" == "-i"
+        )
+        &&
+        (
+            "$secondArgumentIsWantedByThisFirstArgument" != ""
+            ||
+            (
+                "$requireIArgumentForInputFiles" == "0"
+                &&
+                "$arg" = -*
+            )
+            ||
+            (
+                "$requireIArgumentForInputFiles" == "1"
+            )
+        )
+    ]]
+    then
+        if [[ !(
+            "$requireIArgumentForInputFiles" == "1"
+            &&
+            "$arg" == "-i"
+        ) ]]
+        then
+            if (( ${#inputFilesRawArray[@]} == 0 ))
+            then
+                inputOptions+=("$arg")
+            else
+                outputOptions+=("$arg")
+            fi
+        fi
+    elif [[
+        "$requireIArgumentForInputFiles" == "0"
+        ||
+        "$secondArgumentIsWantedByThisFirstArgument" == "-i"
+    ]]
+    then
+        if echo -n "$arg" | egrep '^(https?|ftp)://'
+        then
+            inputFilesRawArray+=("$arg")
+            localRawFilesArray+=("$arg")
+        else
+            tmp=`echo -n "$arg" | sed 's@^file:@@'`
+            localRawFilesArray+=("$tmp")
+            if [[ "$secondArgumentIsWantedByThisFirstArgument" == "-i" ]]
+            then
+                if ! ls -1d -- "$tmp" >/dev/null 2>/dev/null
+                then
+                    >&2 echo "Input file '$tmp' not found"
+                    exit 1
+                fi
+            fi
+            tmp=`echo -n "$tmp" | sed -E 's@(\s|\\\\)@\\\\\1@g' | sed "s@'@\\\\\'@g"`
+            # ^ FIXME: does it work for all filenames?
+            inputFilesRawArray+=("file:$tmp")
+        fi
+    elif [[
+        "$requireIArgumentForInputFiles" == "1"
+        &&
+        "$secondArgumentIsWantedByThisFirstArgument" != "-i"
+    ]]
+    then
+        if echo -n "$arg" | egrep '^(https?|ftp)://'
+        then
+            outputFile="$arg"
+        else
+            outputFile=`echo -n "$arg" | sed 's@^file:@@'`
+            outputFile="file:$outputFile"
+        fi
+    else
+        usage
+        exit 1
+    fi
+    if [[
+        "$secondArgumentIsWantedByThisFirstArgument" != ""
+        ||
+        "$areFfmpegArgsAllowed" == "0"
+    ]]
+    then
+        secondArgumentIsWantedByThisFirstArgument=""
+    else
+        if [[ "$requireIArgumentForInputFiles" == "1" && "$arg" == "-i" ]]
+        then
+            secondArgumentIsWantedByThisFirstArgument="$arg"
+        elif [[ "$requireIArgumentForInputFiles" == "0" && "$arg" = -* ]]
+        then
+            if ! in_array "$arg" ${valuelessFfmpegArgs[@]}
+            then
+                secondArgumentIsWantedByThisFirstArgument="$arg"
+            fi
+        fi
+    fi
+done
+if [[
+    "$requireIArgumentForInputFiles" == "0"
+    &&
+    "$outputFile" == ""
+]]
+then
+    outputFile="${localRawFilesArray[((${#localRawFilesArray[@]}-1))]}"
+fi
+actualOutputFile="$outputFile"
+if [[ "$requireIArgumentForInputFiles" == "0" || "file:" =~ ^"$outputFile"* ]]
+then
+    actualOutputFile=`echo -n "$actualOutputFile" | sed 's@^file:@@'`
+    actualOutputFile=`readlink -nf -- "$actualOutputFile"`
+fi
+
+if [[ "$requireIArgumentForInputFiles" == "0" ]]
+then
+    unset 'inputFilesRawArray[((${#inputFilesRawArray[@]}-1))]'
+    unset 'localRawFilesArray[((${#localRawFilesArray[@]}-1))]'
+    outputOptions+=("$outputFile")
+fi
+
+#>&2 echo Input: ${inputFilesRawArray[@]}
+#if [[ "$requireIArgumentForInputFiles" == "0" ]]
+#then
+#   >&2 echo Output: $outputFile
+#fi
+
+
+if (( ${#inputFilesRawArray[@]} < 2 ))
+then
+    >&2 echo "Error: Minimum 2 input files required, ${#inputFilesRawArray[@]} given."
+    >&2 echo Input: ${inputFilesRawArray[@]}
+    if [[ "$requireIArgumentForInputFiles" == "0" ]]
+    then
+        >&2 echo Output: $outputFile
+    fi
+    usage
+    #outputFile=/dev/null
+    exit 1
+fi
+if [[
+    "$requireIArgumentForInputFiles" == "0"
+    &&
+    "$outputFile" == ""
+]]
+then
+    >&2 echo "Error: No output file specified."
+    usage
+    exit 1
+fi
+
+
+ffmpegInputList=""
+firstFileDone=0
+inputFilesRawArrayLength=${#inputFilesRawArray[@]}
+
+for (( i = 0; i < inputFilesRawArrayLength; i++ ))
+do
+    lf="${localRawFilesArray[$i]}"
+    f="${inputFilesRawArray[$i]}"
+    if [[ "${inputFilesRawArray[$i]}" =~ ^file: ]]
+    then
+        actualF=`readlink -nf -- "$lf"`
+        if [[ "$actualF" == "$actualOutputFile" ]]
+        then
+            >&2 echo "Error: The same file '$actualF' is used both as an input file and an output file"
+            exit 1
+        fi
+    fi
+    if [[ "$firstFileDone" == "1" ]]
+    then
+        ffmpegInputList+="$NL"
+    fi
+    ffmpegInputList+="file $f"
+    firstFileDone=1
+done
+
+protocol_whitelist_appendage=""
+if [[ "$isHttpMode" == "1" ]]
+then
+    protocol_whitelist_appendage=",ftp,http,https"
+fi
+
+
+# Also print the final line:
+set -x
+
+ffmpeg \
+-safe 0 \
+-f concat \
+-protocol_whitelist data,file"$protocol_whitelist_appendage" \
+"${inputOptions[@]}" \
+-i "data:text/plain;charset=UTF-8,${ffmpegInputList}" \
+-c copy \
+"${outputOptions[@]}"
+# $ffmpegInputList is
+# file file:./test.mp4\nfile file:/home/aaa.mp4\nfile http://a/b.aac
+# All whitespace and ' in ffmpegInputList are escaped with `\`.
+

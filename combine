@@ -36,7 +36,7 @@ if [ ! -f "$input_subtitle" ]; then
 fi
 
 # Run ffmpeg command to combine video with subtitles
-ffmpeg -i "$input_video" -vf "subtitles='$input_subtitle':force_style='Fontsize=15,Fontname=Arial,PrimaryColour=&Hffffff&,SecondaryColour=&Hffffff&,OutlineColour=&H000000&,BackColour=&H000000&,Alignment=10'" -c:v libx264 -crf 18 -c:a copy "$output_video"
+ffmpeg -i "$input_video" -vf "subtitles='$input_subtitle':force_style='Fontsize=15,Fontname=./fonts/AquireLight-YzE0o.otf,PrimaryColour=&Hffffff&,SecondaryColour=&Hffffff&'" -c:v libx264 -crf 18 -c:a copy "$output_video"
 
 echo "Completed! Video with subtitles is saved as $output_video"
 
