@@ -1,0 +1,107 @@
+#!/bin/bash
+
+set -eo pipefail
+
+log_info() {
+    echo "INFO: $1"
+}
+
+log_error() {
+    echo "ERROR: $1" >&2
+}
+
+cleanup() {
+    if [[ -d "$temp_dir" ]]; then
+        rm -rf "$temp_dir"
+        log_info "Temporary files and directory cleaned up."
+    fi
+}
+
+trap cleanup EXIT
+
+if [ $# -lt 3 ]; then
+    echo "Usage: $0 <input_video> <music_file> <cycles>"
+    exit 1
+fi
+
+input_video=$1
+music_file=$2
+cycles=$3
+
+if [[ ! -f "$input_video" ]]; then
+    log_error "Input video file not found: $input_video"
+    exit 1
+fi
+
+if [[ ! -f "$music_file" ]]; then
+    log_error "Music file not found: $music_file"
+    exit 1
+fi
+
+# Function to get the duration of a media file
+get_media_duration() {
+    duration=$(ffprobe -i "$1" -show_entries format=duration -v quiet -of csv="p=0")
+    echo "$duration"
+}
+
+video_duration=$(get_media_duration "$input_video")
+music_duration=$(get_media_duration "$music_file")
+
+min_cut_duration=3
+max_cut_duration=5
+output_duration=$((min_cut_duration * cycles))
+
+temp_dir=$(mktemp -d)
+log_info "Temporary directory created: $temp_dir"
+
+# Function to generate random timestamps
+generate_random_timestamps() {
+    local timestamps=()
+    while [ ${#timestamps[@]} -lt $cycles ]; do
+        start_time=$(awk "BEGIN{srand(); print int(rand()*($video_duration-$max_cut_duration))}")
+        # Check if the generated timestamp is unique
+        if [[ ! " ${timestamps[@]} " =~ " $start_time " ]]; then
+            timestamps+=("$start_time")
+        fi
+    done
+
+    # Sort timestamps in ascending order
+    IFS=$'\n' sorted_timestamps=($(sort -n <<<"${timestamps[*]}"))
+    unset IFS
+    echo "${sorted_timestamps[@]}"
+}
+
+# Function to cut the video segments
+cut_video_segments() {
+    local sorted_timestamps=($1)
+    for ((i = 1; i <= cycles; i++)); do
+        start_time=${sorted_timestamps[$((i - 1))]}
+        cut_duration=$(shuf -i "$min_cut_duration"-"$max_cut_duration" -n 1)
+        output_name="${temp_dir}/cut_${i}.mp4"
+        ffmpeg -ss "$start_time" -i "$input_video" -t "$cut_duration" -c copy -avoid_negative_ts 1 "$output_name"
+        log_info "Segment $i created: $output_name"
+    done
+}
+
+sorted_timestamps=$(generate_random_timestamps)
+
+# Step 5: Cut the video segments
+cut_video_segments "$sorted_timestamps"
+
+# Step 6: Concatenate the cut video segments without audio
+concat_file="${temp_dir}/concat.txt"
+for ((i = 1; i <= cycles; i++)); do
+    echo "file 'cut_${i}.mp4'" >>"$concat_file"
+done
+ffmpeg -f concat -safe 0 -i "$concat_file" -an "${temp_dir}/concatenated_no_audio.mp4"
+log_info "Video segments concatenated without audio."
+
+# Step 7: Combine the concatenated video without audio with the original music as background
+output_date=$(date +'%Y%m%d%H_%M_%S')
+output_video="mve_${output_date}.mp4"
+ffmpeg -i "${temp_dir}/concatenated_no_audio.mp4" -i "$music_file" -c:v copy -c:a aac -strict experimental "$output_video"
+log_info "Final video created: $output_video"
+
+# Cleanup temporary files and directory
+cleanup
+
