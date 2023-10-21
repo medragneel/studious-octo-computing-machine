@@ -28,11 +28,11 @@ savetitle = f"./dist/final_{dt}_.mp4"
 length = 5
 cycle = int(sys.argv[3])
 
-
 def getrandomDuration(duration):
-    start = round(random.uniform(0,duration-length), 0)
+    start = round(random.uniform(0,duration-length), 1)
     end = start + length
     return start,end
+
 
 cuts = []
 
@@ -43,7 +43,7 @@ def edit_video(loadtitle, savetitle, cuts):
     for _ in range(cycle):
         cuts.append(getrandomDuration(video.duration))
     # a set to remove duplicate
-    cts = set(cuts)
+    cts = {tuple(cut): None for cut in cuts}.keys()
     print(cuts)
 
     #list of clips

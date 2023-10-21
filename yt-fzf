@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Function to get video formats
+get_video_formats() {
+    local url="$1"
+    formats=$(yt-dlp -J --skip-download -- "$url" | jq -r '.formats[] | "\(.format_id) - \(.resolution)"')
+    echo "$formats"
+}
+
+# Main function
+main() {
+    read -p "Enter video URL > " video_url
+    video_formats=$(get_video_formats "$video_url")
+
+    if [ -z "$video_formats" ]; then
+        echo "No video formats found."
+        exit 1
+    fi
+
+    selected_format=$(echo -e "$video_formats" | fzf)
+    format_id=$(echo "$selected_format" | cut -d' ' -f1)
+    format_extension=$(yt-dlp -J --skip-download -- "$video_url" | jq -r --arg format_id "$format_id" '.formats[] | select(.format_id == $format_id) | .ext')
+
+    for format in $video_formats; do
+        if [[ $format == *$format_id* ]]; then
+            download_url=$(yt-dlp -g "$video_url" --format "$format_id")
+            if [ -n "$download_url" ]; then
+                yt-dlp -o "%(title)s.$format_extension" -- "$download_url"
+            else
+                echo "Error: Failed to retrieve download URL for the selected format."
+                exit 1
+            fi
+            break
+        fi
+    done
+}
+
+if [ "$#" -eq 0 ]; then
+    main
+else
+    echo "Usage: $0 (no arguments needed)"
+    exit 1
+fi
+

@@ -16,6 +16,16 @@ cleanup() {
         log_info "Temporary files and directory cleaned up."
     fi
 }
+# Function to add text overlay to the video
+add_text_overlay() {
+    local input_video=$1
+    local text="$2"
+    local output_video=$3
+
+    # Use the `drawtext` filter to add the text overlay
+    ffmpeg -i "$input_video" -vf "drawtext=text='$text':x=40:y=40:fontfile=./fonts/Anurati-Regular.otf:fontsize=24:fontcolor=white" -c:v libx264 -c:a copy "$output_video"
+}
+
 
 trap cleanup EXIT
 
@@ -97,10 +107,24 @@ ffmpeg -f concat -safe 0 -i "$concat_file" -an "${temp_dir}/concatenated_no_audi
 log_info "Video segments concatenated without audio."
 
 # Step 7: Combine the concatenated video without audio with the original music as background
+# output_date=$(date +'%Y%m%d%H_%M_%S')
+# output_video="mve_${output_date}.mp4"
+# ffmpeg -i "${temp_dir}/concatenated_no_audio.mp4" -i "$music_file" -c:v copy -c:a aac -strict experimental "$output_video"
+# log_info "Final video created: $output_video"
+# Step 7: Combine the concatenated video without audio with the original music as background
 output_date=$(date +'%Y%m%d%H_%M_%S')
-output_video="mve_${output_date}.mp4"
-ffmpeg -i "${temp_dir}/concatenated_no_audio.mp4" -i "$music_file" -c:v copy -c:a aac -strict experimental "$output_video"
+output_video="dist/mve_${output_date}.mp4"
+concatenated_no_audio="${temp_dir}/concatenated_no_audio.mp4"
+music_duration=$(get_media_duration "$music_file")
+
+# Add text overlay to the video
+text_overlay="UTOPIA"
+add_text_overlay "$concatenated_no_audio" "$text_overlay" "${temp_dir}/with_text.mp4"
+
+# Combine the video with the original music
+ffmpeg -i "${temp_dir}/with_text.mp4" -i "$music_file" -c:v copy -c:a aac -strict experimental "$output_video"
 log_info "Final video created: $output_video"
+
 
 # Cleanup temporary files and directory
 cleanup
