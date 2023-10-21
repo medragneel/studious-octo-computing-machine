@@ -15,7 +15,7 @@ events/*
 track/*
 
 *.mp3
-*.mp4a
+*.m4a
 *.opus
 *.wav
 *.mp4
