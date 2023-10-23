@@ -21,11 +21,12 @@ main() {
     format_id=$(echo "$selected_format" | cut -d' ' -f1)
     format_extension=$(yt-dlp -J --skip-download -- "$video_url" | jq -r --arg format_id "$format_id" '.formats[] | select(.format_id == $format_id) | .ext')
 
+    title=$(uuidgen)
     for format in $video_formats; do
         if [[ $format == *$format_id* ]]; then
             download_url=$(yt-dlp -g "$video_url" --format "$format_id")
             if [ -n "$download_url" ]; then
-                yt-dlp -o "%(title)s.$format_extension" -- "$download_url"
+                yt-dlp -o "$title.$format_extension" -- "$download_url"
             else
                 echo "Error: Failed to retrieve download URL for the selected format."
                 exit 1
