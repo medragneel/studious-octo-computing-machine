@@ -8,5 +8,5 @@ fi
 input_file="$1"
 output_file="$2"
 
-ffmpeg -i "$input_file" -filter_complex "drawtext=text='Utopia':fontfile='./fonts/Painted Lady.otf':fontsize=35:x=40:y=40:fontcolor=white:bordercolor=black:borderw=2" -c:a copy "$output_file"
+ffmpeg -i "$input_file" -filter_complex "drawtext=text='Utopia':fontfile='./fonts/Aquire-BW0ox.otf':fontsize=35:x=40:y=40:fontcolor=white" -c:a copy "$output_file"
 

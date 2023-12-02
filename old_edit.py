@@ -1,17 +1,24 @@
-import csv
 import moviepy.editor as mpy
+# from moviepy.video.tools.subtitles import SubtitlesClip
+# from moviepy.video.fx.colorx import colorx
 from moviepy.video.fx.rotate import rotate
 from moviepy.video.fx.speedx import speedx
+# from moviepy.video.fx.lum_contrast import lum_contrast
 from moviepy.audio.fx.audio_fadeout import audio_fadeout
 from moviepy.audio.fx.audio_fadein import audio_fadein
 from datetime import datetime
+import random
 import sys
-from utils import detect_overlapping_tuples, getrandomDuration
 
-dataset_file = "./dataset.csv"
+
 font_family = './fonts/Anurati-Regular.otf'
+# subs='./ads.srt'
+
 vcodec = "libx264"
+
 videoquality = "30"
+
+# slow, ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow
 compression = "superfast"
 
 music = sys.argv[2]
@@ -21,66 +28,41 @@ savetitle = f"./dist/final_{dt}_.mp4"
 length = 5
 cycle = int(sys.argv[3])
 
+
+def getrandomDuration(duration):
+    start = round(random.uniform(0, duration-length), 1)
+    end = start + length
+    return start, end
+
+
 cuts = []
 
 
+def edit_video(loadtitle, savetitle, cuts):
+    # load file
+    video = mpy.VideoFileClip(loadtitle, audio=True)
+    # list of random cuts
+    for _ in range(cycle):
+        cuts.append(getrandomDuration(video.duration))
+    # a set to remove duplicate
+    cts = {tuple(cut): None for cut in cuts}.keys()
+    print(cuts)
 
-# def generate_and_classify_cuts(video, cycle, length):
-#     cuts = []
-#
-#     for _ in range(cycle):
-#         cuts.append(getrandomDuration(video.duration, length))
-#
-#     # Remove duplicate cuts
-#     cts = list({tuple(cut): None for cut in cuts}.keys())
-#
-#     # Check if all cuts are unique
-#     classified = "Unique" if not detect_overlapping_tuples(cts) else "Repeated"
-#
-#     # List of clips
-#     clips = [video.subclip(cut[0], cut[1]).crossfadein(1) for cut in cts]
-#
-#     return clips, classified, cuts
-#
-def generate_and_classify_cuts(video, cycle, length):
-    while True:
-        cuts = [getrandomDuration(video.duration, length) for _ in range(cycle)]
-
-        # Remove duplicate cuts
-        cts = list({tuple(cut): None for cut in cuts}.keys())
-
-        # Check if all cuts are unique
-        if not detect_overlapping_tuples(cts):
-            classified = "Unique"
-            break
-        else:
-            classified = "Repeated"
-
-    # List of clips
+    # list of clips
     clips = [video.subclip(cut[0], cut[1]).crossfadein(1) for cut in cts]
 
-    return clips, classified, cuts
+    # final clip
 
-
-
-def edit_video(loadtitle, savetitle, cuts):
-    video = mpy.VideoFileClip(loadtitle, audio=True)
-
-    clips, classified, cuts = generate_and_classify_cuts(video, cycle, length)
-
-    with open('dataset.csv', "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([cuts, classified])
-
-
-
-    # Final clip
     if sys.argv[4] == "r":
         final_clip = mpy.concatenate_videoclips(clips, method="compose")\
             .fx(speedx, 1.2)\
-            .fx(rotate, 270)
+            .fx(rotate, 270)\
+            # .fx(lum_contrast,lum=0.9,contrast =0.8)\
+        # .fx(blackwhite,preserve_luminosity=True)\
 
+        # add audio to clips
         audio = mpy.AudioFileClip(music)
+
         new_audioclip = mpy.CompositeAudioClip([audio])
         final_clip.audio = new_audioclip.set_duration(final_clip.duration)
         final_clip.audio = new_audioclip.fx(audio_fadein, duration=2.0)
@@ -94,6 +76,7 @@ def edit_video(loadtitle, savetitle, cuts):
         final = mpy.CompositeVideoClip([final_clip, logo])
         final.set_fps(30)
 
+    # # save file
         final.write_videofile(savetitle,
                               threads=6,
                               fps=30,
@@ -102,9 +85,14 @@ def edit_video(loadtitle, savetitle, cuts):
                               ffmpeg_params=["-crf", videoquality])
     else:
         final_clip = mpy.concatenate_videoclips(clips, method="compose")\
-            .fx(speedx, 1.2)
+            .fx(speedx, 1.2)\
+            # .fx(rotate,270)\
+        # .fx(lum_contrast,lum=0.9,contrast =0.8)\
+        # .fx(blackwhite,preserve_luminosity=True)\
 
+        # add audio to clips
         audio = mpy.AudioFileClip(music)
+
         new_audioclip = mpy.CompositeAudioClip([audio])
         final_clip.audio = new_audioclip.set_duration(final_clip.duration)
         final_clip.audio = new_audioclip.fx(audio_fadein, duration=2.0)
@@ -118,6 +106,7 @@ def edit_video(loadtitle, savetitle, cuts):
         final = mpy.CompositeVideoClip([final_clip, logo])
         final.set_fps(30)
 
+    # # save file
         final.write_videofile(savetitle,
                               threads=6,
                               fps=30,
