@@ -4,6 +4,8 @@ dist/
 dist/*
 src/
 src/*
+merge/
+merge/*
 exported/
 exported/*
 music/
