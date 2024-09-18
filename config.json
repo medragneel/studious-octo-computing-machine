@@ -1,0 +1,12 @@
+{
+  "videos": [
+    {
+      "input_video": "./virgin_punk_1.mp4",
+      "music": "./tracks/4/cradles_4.mp3"
+    },
+    {
+      "input_video": "./mix135.mp4",
+      "music": "./tracks/4/gdfr_4.mp3"
+    }
+  ]
+}
