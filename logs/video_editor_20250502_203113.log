@@ -1,9 +1,0 @@
-2025-05-02 20:31:13 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-05-02 20:31:13 - INFO - Processing video: ./moonrise_1.mp4
-2025-05-02 20:31:13 - INFO - Using music: ./tracks/erupt_4.mp3
-2025-05-02 20:31:20 - INFO - Writing video to: ./dist/final_20250502203120_1.mp4
-2025-05-02 20:36:52 - INFO - Successfully processed video: ./dist/final_20250502203120_1.mp4
-2025-05-02 20:36:52 - INFO - Processing video: ./moonrise_1.mp4
-2025-05-02 20:36:52 - INFO - Using music: ./tracks/erupt_4.mp3
-2025-05-02 20:36:59 - INFO - Writing video to: ./dist/final_20250502203659_2.mp4
-2025-05-02 20:42:41 - INFO - Successfully processed video: ./dist/final_20250502203659_2.mp4

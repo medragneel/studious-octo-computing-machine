@@ -1,5 +1,0 @@
-2025-05-31 18:02:34 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-05-31 18:02:34 - INFO - Processing video: ./old.mp4
-2025-05-31 18:02:34 - INFO - Using music: ./tracks/4/last_one_standing_4.mp3
-2025-05-31 18:02:42 - INFO - Writing video to: ./dist/final_20250531180242_1.mp4
-2025-05-31 18:08:21 - INFO - Successfully processed video: ./dist/final_20250531180242_1.mp4

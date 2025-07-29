@@ -1,9 +1,0 @@
-2025-05-07 07:25:41 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-05-07 07:25:41 - INFO - Processing video: ./Lazarus_AMV_-_Give_Up.mp4
-2025-05-07 07:25:41 - INFO - Using music: ./tracks/gods_4.mp3
-2025-05-07 07:25:48 - INFO - Writing video to: ./dist/final_20250507072548_1.mp4
-2025-05-07 07:30:41 - INFO - Successfully processed video: ./dist/final_20250507072548_1.mp4
-2025-05-07 07:30:41 - INFO - Processing video: ./fire_force_.mp4
-2025-05-07 07:30:41 - INFO - Using music: ./tracks/hero_4.mp3
-2025-05-07 07:30:47 - INFO - Writing video to: ./dist/final_20250507073047_1.mp4
-2025-05-07 07:35:41 - INFO - Successfully processed video: ./dist/final_20250507073047_1.mp4

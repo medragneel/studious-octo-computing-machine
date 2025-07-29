@@ -1,5 +1,0 @@
-2025-06-01 14:35:46 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-06-01 14:35:46 - INFO - Processing video: ./src/edited_[Erai-raws] Wind Breaker Season 2 - 09 [1080p CR WEB-DL AVC AAC][MultiSub][6BD1723F]_.mp4
-2025-06-01 14:35:46 - INFO - Using music: ./tracks/4/all_this_power_4.mp3
-2025-06-01 14:35:55 - INFO - Writing video to: ./dist/final_20250601143555_1.mp4
-2025-06-01 14:42:58 - INFO - Successfully processed video: ./dist/final_20250601143555_1.mp4

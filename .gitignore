@@ -29,4 +29,5 @@ track/*
 *.mp4
 *.srt
 *.xspf
-*.logs
+*.log
+logs/*.log

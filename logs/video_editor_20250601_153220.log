@@ -1,5 +1,0 @@
-2025-06-01 15:32:20 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-06-01 15:32:20 - INFO - Processing video: ./mix.mp4
-2025-06-01 15:32:20 - INFO - Using music: ./tracks/4/numb_the_pain_4.mp3
-2025-06-01 15:32:28 - INFO - Writing video to: ./dist/final_20250601153228_1.mp4
-2025-06-01 15:38:44 - INFO - Successfully processed video: ./dist/final_20250601153228_1.mp4

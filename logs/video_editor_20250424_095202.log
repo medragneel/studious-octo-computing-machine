@@ -1,5 +1,0 @@
-2025-04-24 09:52:02 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-04-24 09:52:02 - INFO - Processing video: ./WIND_BREAKER_Season_2_OPENING_THEME.mp4
-2025-04-24 09:52:02 - INFO - Using music: ./tracks/self_made.m4a
-2025-04-24 09:52:10 - INFO - Writing video to: ./dist/final_20250424095210_1.mp4
-2025-04-24 09:57:15 - INFO - Successfully processed video: ./dist/final_20250424095210_1.mp4

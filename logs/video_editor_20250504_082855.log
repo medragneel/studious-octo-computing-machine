@@ -1,9 +1,0 @@
-2025-05-04 08:28:55 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-05-04 08:28:55 - INFO - Processing video: ./Luffy_vs_kizaru_zoro_vs_lucci_Amv_skillet-not_gonna_die.mp4
-2025-05-04 08:28:55 - INFO - Using music: ./tracks/4/dont_fall_in_love_4.mp3
-2025-05-04 08:29:12 - INFO - Writing video to: ./dist/final_20250504082912_1.mp4
-2025-05-04 08:35:00 - INFO - Successfully processed video: ./dist/final_20250504082912_1.mp4
-2025-05-04 08:35:00 - INFO - Processing video: ./src/mix67.mp4
-2025-05-04 08:35:00 - INFO - Using music: ./tracks/4/lost_4.mp3
-2025-05-04 08:35:09 - INFO - Writing video to: ./dist/final_20250504083509_1.mp4
-2025-05-04 08:42:12 - INFO - Successfully processed video: ./dist/final_20250504083509_1.mp4

@@ -1,5 +1,0 @@
-2025-04-30 15:31:47 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-04-30 15:31:47 - INFO - Processing video: ./src/#/mix21.mp4
-2025-04-30 15:31:47 - INFO - Using music: ./tracks/thgrough_it_all_4.m4a
-2025-04-30 15:31:53 - INFO - Writing video to: ./dist/final_20250430153153_1.mp4
-2025-04-30 15:36:53 - INFO - Successfully processed video: ./dist/final_20250430153153_1.mp4

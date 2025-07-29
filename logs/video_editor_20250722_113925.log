@@ -1,5 +1,0 @@
-2025-07-22 11:39:25 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-07-22 11:39:25 - INFO - Processing video: ./mix_.mp4
-2025-07-22 11:39:25 - INFO - Using music: ./tracks/4/finish_line_4.mp3
-2025-07-22 11:40:38 - INFO - Writing video to: ./dist/final_20250722114038_1.mp4
-2025-07-22 11:46:33 - INFO - Successfully processed video: ./dist/final_20250722114038_1.mp4

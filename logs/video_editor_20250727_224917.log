@@ -1,5 +1,0 @@
-2025-07-27 22:49:17 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-07-27 22:49:17 - INFO - Processing video: ./src/edited_[Erai-raws] Kaijuu 8 Gou 2nd Season - 02 [1080p CR WEB-DL AVC AAC][MultiSub][54C53B04]_.mp4
-2025-07-27 22:49:17 - INFO - Using music: ./tracks/4/blind_4.mp3
-2025-07-27 22:49:25 - INFO - Writing video to: ./dist/final_20250727224925_1.mp4
-2025-07-27 22:57:30 - INFO - Successfully processed video: ./dist/final_20250727224925_1.mp4

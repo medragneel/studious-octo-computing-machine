@@ -1,9 +1,0 @@
-2025-06-11 12:06:29 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-06-11 12:06:29 - INFO - Processing video: ./op__.mp4
-2025-06-11 12:06:29 - INFO - Using music: ./tracks/drag_me_down_4.mp3
-2025-06-11 12:06:37 - INFO - Writing video to: ./dist/final_20250611120637_1.mp4
-2025-06-11 12:12:35 - INFO - Successfully processed video: ./dist/final_20250611120637_1.mp4
-2025-06-11 12:12:35 - INFO - Processing video: ./op__.mp4
-2025-06-11 12:12:35 - INFO - Using music: ./tracks/drag_me_down_4.mp3
-2025-06-11 12:12:42 - INFO - Writing video to: ./dist/final_20250611121242_2.mp4
-2025-06-11 12:18:27 - INFO - Successfully processed video: ./dist/final_20250611121242_2.mp4

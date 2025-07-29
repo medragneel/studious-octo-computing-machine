@@ -1,9 +1,0 @@
-2025-05-13 14:26:16 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-05-13 14:26:16 - INFO - Processing video: ./src/mix64.mp4
-2025-05-13 14:26:16 - INFO - Using music: ./tracks/mvp_4.mp4
-2025-05-13 14:26:26 - INFO - Writing video to: ./dist/final_20250513142626_1.mp4
-2025-05-13 14:31:42 - INFO - Successfully processed video: ./dist/final_20250513142626_1.mp4
-2025-05-13 14:31:42 - INFO - Processing video: ./_fire.mp4
-2025-05-13 14:31:42 - INFO - Using music: ./tracks/coma_4.mp3
-2025-05-13 14:31:48 - INFO - Writing video to: ./dist/final_20250513143148_1.mp4
-2025-05-13 14:36:50 - INFO - Successfully processed video: ./dist/final_20250513143148_1.mp4

@@ -1,5 +1,0 @@
-2025-05-02 11:53:41 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-05-02 11:53:41 - INFO - Processing video: ./src/mix75.mp4
-2025-05-02 11:53:41 - INFO - Using music: ./tracks/no_glory_4.mp3
-2025-05-02 11:53:48 - INFO - Writing video to: ./dist/final_20250502115348_1.mp4
-2025-05-02 12:01:40 - INFO - Successfully processed video: ./dist/final_20250502115348_1.mp4

@@ -1,9 +1,0 @@
-2025-04-23 15:56:06 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
-2025-04-23 15:56:06 - INFO - Processing video: ./__vig.mp4
-2025-04-23 15:56:06 - INFO - Using music: ./tracks/4/villains_heros_4.mp3
-2025-04-23 15:56:10 - INFO - Writing video to: ./dist/final_20250423155610_1.mp4
-2025-04-23 16:01:48 - INFO - Successfully processed video: ./dist/final_20250423155610_1.mp4
-2025-04-23 16:01:48 - INFO - Processing video: ./__vig.mp4
-2025-04-23 16:01:48 - INFO - Using music: ./tracks/4/villains_heros_4.mp3
-2025-04-23 16:01:53 - INFO - Writing video to: ./dist/final_20250423160153_2.mp4
-2025-04-23 16:07:35 - INFO - Successfully processed video: ./dist/final_20250423160153_2.mp4
