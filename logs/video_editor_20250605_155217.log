@@ -1,0 +1,13 @@
+2025-06-05 15:52:17 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-06-05 15:52:17 - INFO - Processing video: ./src/fire_force_12.mp4
+2025-06-05 15:52:17 - INFO - Using music: ./tracks/fight_the_fade_4.mp3
+2025-06-05 15:52:26 - INFO - Writing video to: ./dist/final_20250605155226_1.mp4
+2025-06-05 15:57:38 - INFO - Successfully processed video: ./dist/final_20250605155226_1.mp4
+2025-06-05 15:57:38 - INFO - Processing video: ./sakamoto.mp4
+2025-06-05 15:57:38 - INFO - Using music: ./tracks/walls_4.mp3
+2025-06-05 15:57:44 - INFO - Writing video to: ./dist/final_20250605155744_1.mp4
+2025-06-05 16:02:58 - INFO - Successfully processed video: ./dist/final_20250605155744_1.mp4
+2025-06-05 16:02:58 - INFO - Processing video: ./Katainaka_no_Ossan_Kensei_ni_Naru_AMV_Careless_Surena.mp4
+2025-06-05 16:02:58 - INFO - Using music: ./tracks/i_wasnt_born_to_behave_4.mp3
+2025-06-05 16:03:04 - INFO - Writing video to: ./dist/final_20250605160304_1.mp4
+2025-06-05 16:08:19 - INFO - Successfully processed video: ./dist/final_20250605160304_1.mp4

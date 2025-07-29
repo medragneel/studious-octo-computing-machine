@@ -1,5 +1,14 @@
+__pycache__/
+__pycache__/*
+
+videos/
+videos/*
+output/
+output/*
 dist/
 dist/*
+logs/
+logs/*
 src/
 src/*
 exported/
@@ -8,7 +17,6 @@ music/
 music/*
 shorts/
 shorts/*
-fonts/*
 sorted/*
 sorted_music/*
 events/*
@@ -21,3 +29,4 @@ track/*
 *.mp4
 *.srt
 *.xspf
+*.logs

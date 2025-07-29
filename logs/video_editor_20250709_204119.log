@@ -1,0 +1,13 @@
+2025-07-09 20:41:19 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-07-09 20:41:19 - INFO - Processing video: ./The_resistance_AMV_Solo_Leveling_anime_sungjinwoo_amv_sololeveling.mp4
+2025-07-09 20:41:19 - INFO - Using music: ./tracks/rise_4.mp3
+2025-07-09 20:41:28 - INFO - Writing video to: ./dist/final_20250709204128_1.mp4
+2025-07-09 20:47:10 - INFO - Successfully processed video: ./dist/final_20250709204128_1.mp4
+2025-07-09 20:47:10 - INFO - Processing video: ./Gachiakuta_AMV_-_Enemy_-_Imagine_Dragons.mp4
+2025-07-09 20:47:10 - INFO - Using music: ./tracks/the_revolution_4.mp3
+2025-07-09 20:47:15 - INFO - Writing video to: ./dist/final_20250709204715_1.mp4
+2025-07-09 20:52:48 - INFO - Successfully processed video: ./dist/final_20250709204715_1.mp4
+2025-07-09 20:52:48 - INFO - Processing video: ./Gachiakuta_AMV_-_Enemy_-_Imagine_Dragons.mp4
+2025-07-09 20:52:48 - INFO - Using music: ./tracks/the_revolution_4.mp3
+2025-07-09 20:52:54 - INFO - Writing video to: ./dist/final_20250709205254_2.mp4
+2025-07-09 20:58:37 - INFO - Successfully processed video: ./dist/final_20250709205254_2.mp4

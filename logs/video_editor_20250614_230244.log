@@ -1,0 +1,9 @@
+2025-06-14 23:02:44 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-06-14 23:02:44 - INFO - Processing video: ./Shrina_vs_Burns_Final_Fire_Force_Season_3_AMV_Scared_to_Ask.mp4
+2025-06-14 23:02:44 - INFO - Using music: ./tracks/cutting_it_close_4.mp3
+2025-06-14 23:02:57 - INFO - Writing video to: ./dist/final_20250614230257_1.mp4
+2025-06-14 23:07:55 - INFO - Successfully processed video: ./dist/final_20250614230257_1.mp4
+2025-06-14 23:07:55 - INFO - Processing video: ./src/mix62.mp4
+2025-06-14 23:07:55 - INFO - Using music: ./tracks/fire_4.mp3
+2025-06-14 23:08:01 - INFO - Writing video to: ./dist/final_20250614230801_1.mp4
+2025-06-14 23:13:15 - INFO - Successfully processed video: ./dist/final_20250614230801_1.mp4

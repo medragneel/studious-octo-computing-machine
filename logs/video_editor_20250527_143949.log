@@ -1,0 +1,5 @@
+2025-05-27 14:39:49 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-27 14:39:49 - INFO - Processing video: ./src/wind_breaker_13.mp4
+2025-05-27 14:39:49 - INFO - Using music: ./tracks/4/wild_4.mp3
+2025-05-27 14:40:00 - INFO - Writing video to: ./dist/final_20250527144000_1.mp4
+2025-05-27 14:45:55 - INFO - Successfully processed video: ./dist/final_20250527144000_1.mp4

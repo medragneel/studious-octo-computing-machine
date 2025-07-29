@@ -1,0 +1,13 @@
+2025-05-03 18:22:56 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-03 18:22:56 - INFO - Processing video: ./fire_force_.mp4
+2025-05-03 18:22:56 - INFO - Using music: ./tracks/walls_4.mp3
+2025-05-03 18:23:03 - INFO - Writing video to: ./dist/final_20250503182303_1.mp4
+2025-05-03 18:28:50 - INFO - Successfully processed video: ./dist/final_20250503182303_1.mp4
+2025-05-03 18:28:50 - INFO - Processing video: ./fire_force_.mp4
+2025-05-03 18:28:50 - INFO - Using music: ./tracks/standing_4.mp3
+2025-05-03 18:28:56 - INFO - Writing video to: ./dist/final_20250503182856_1.mp4
+2025-05-03 18:34:38 - INFO - Successfully processed video: ./dist/final_20250503182856_1.mp4
+2025-05-03 18:34:38 - INFO - Processing video: ./fire_force_.mp4
+2025-05-03 18:34:38 - INFO - Using music: ./tracks/shine_4.mp3
+2025-05-03 18:34:44 - INFO - Writing video to: ./dist/final_20250503183444_1.mp4
+2025-05-03 18:40:29 - INFO - Successfully processed video: ./dist/final_20250503183444_1.mp4

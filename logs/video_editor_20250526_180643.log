@@ -1,0 +1,5 @@
+2025-05-26 18:06:43 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-26 18:06:43 - INFO - Processing video: ./__mx__fbdc9190-c62b-4107-9e54-655213b3ffc0.mp4
+2025-05-26 18:06:43 - INFO - Using music: ./tracks/blood_4.mp3
+2025-05-26 18:06:53 - INFO - Writing video to: ./dist/final_20250526180653_1.mp4
+2025-05-26 18:12:54 - INFO - Successfully processed video: ./dist/final_20250526180653_1.mp4

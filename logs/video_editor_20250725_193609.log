@@ -1,0 +1,9 @@
+2025-07-25 19:36:09 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-07-25 19:36:09 - INFO - Processing video: ./src/edited_[Erai-raws] Tougen Anki - 03 [1080p CR WEB-DL AVC AAC][MultiSub][8A47E7C3]_.mp4
+2025-07-25 19:36:09 - INFO - Using music: ./tracks/4/begun_4.mp3
+2025-07-25 19:36:15 - INFO - Writing video to: ./dist/final_20250725193615_1.mp4
+2025-07-25 19:41:33 - INFO - Successfully processed video: ./dist/final_20250725193615_1.mp4
+2025-07-25 19:41:33 - INFO - Processing video: ./src/edited_[Erai-raws] Tougen Anki - 03 [1080p CR WEB-DL AVC AAC][MultiSub][8A47E7C3]_.mp4
+2025-07-25 19:41:33 - INFO - Using music: ./tracks/4/begun_4.mp3
+2025-07-25 19:41:39 - INFO - Writing video to: ./dist/final_20250725194139_2.mp4
+2025-07-25 19:47:02 - INFO - Successfully processed video: ./dist/final_20250725194139_2.mp4

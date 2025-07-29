@@ -1,0 +1,17 @@
+2025-05-01 20:49:28 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-01 20:49:28 - INFO - Processing video: ./FIRE_FORCE_-_GASOLINE_AMV.mp4
+2025-05-01 20:49:28 - INFO - Using music: ./tracks/walls_4.mp3
+2025-05-01 20:49:37 - INFO - Writing video to: ./dist/final_20250501204937_1.mp4
+2025-05-01 20:54:56 - INFO - Successfully processed video: ./dist/final_20250501204937_1.mp4
+2025-05-01 20:54:56 - INFO - Processing video: ./FIRE_FORCE_-_GASOLINE_AMV.mp4
+2025-05-01 20:54:56 - INFO - Using music: ./tracks/fighter_4.mp3
+2025-05-01 20:55:01 - INFO - Writing video to: ./dist/final_20250501205501_1.mp4
+2025-05-01 21:00:18 - INFO - Successfully processed video: ./dist/final_20250501205501_1.mp4
+2025-05-01 21:00:18 - INFO - Processing video: ./FIRE_FORCE_-_GASOLINE_AMV.mp4
+2025-05-01 21:00:18 - INFO - Using music: ./tracks/rise_4.mp3
+2025-05-01 21:00:24 - INFO - Writing video to: ./dist/final_20250501210024_1.mp4
+2025-05-01 21:05:36 - INFO - Successfully processed video: ./dist/final_20250501210024_1.mp4
+2025-05-01 21:05:36 - INFO - Processing video: ./FIRE_FORCE_-_GASOLINE_AMV.mp4
+2025-05-01 21:05:36 - INFO - Using music: ./tracks/river_4.mp3
+2025-05-01 21:05:41 - INFO - Writing video to: ./dist/final_20250501210541_1.mp4
+2025-05-01 21:10:37 - INFO - Successfully processed video: ./dist/final_20250501210541_1.mp4

@@ -1,0 +1,9 @@
+2025-07-24 11:10:24 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-07-24 11:10:24 - INFO - Processing video: ./Fake_AMV_-_MIX_Anime_Mix.mp4
+2025-07-24 11:10:24 - INFO - Using music: ./tracks/light_em_up_4.mp3
+2025-07-24 11:10:31 - INFO - Writing video to: ./dist/final_20250724111031_1.mp4
+2025-07-24 11:17:22 - INFO - Successfully processed video: ./dist/final_20250724111031_1.mp4
+2025-07-24 11:17:22 - INFO - Processing video: ./Fake_AMV_-_MIX_Anime_Mix.mp4
+2025-07-24 11:17:22 - INFO - Using music: ./tracks/light_em_up_4.mp3
+2025-07-24 11:17:43 - INFO - Writing video to: ./dist/final_20250724111743_2.mp4
+2025-07-24 11:27:05 - INFO - Successfully processed video: ./dist/final_20250724111743_2.mp4

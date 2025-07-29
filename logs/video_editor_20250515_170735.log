@@ -1,0 +1,9 @@
+2025-05-15 17:07:35 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-15 17:07:35 - INFO - Processing video: ./__mx__fb1e120c-4661-4fb7-a65e-71cbd037f18e.mp4
+2025-05-15 17:07:35 - INFO - Using music: ./tracks/light_that_fire_4.mp3
+2025-05-15 17:07:45 - INFO - Writing video to: ./dist/final_20250515170745_1.mp4
+2025-05-15 17:13:04 - INFO - Successfully processed video: ./dist/final_20250515170745_1.mp4
+2025-05-15 17:13:04 - INFO - Processing video: ./solo.mp4
+2025-05-15 17:13:04 - INFO - Using music: ./tracks/4/echo_4.mp3
+2025-05-15 17:13:08 - INFO - Writing video to: ./dist/final_20250515171308_1.mp4
+2025-05-15 17:18:41 - INFO - Successfully processed video: ./dist/final_20250515171308_1.mp4

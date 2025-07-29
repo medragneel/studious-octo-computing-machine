@@ -1,0 +1,9 @@
+2025-06-08 15:17:14 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-06-08 15:17:14 - INFO - Processing video: ./sharks.mp4
+2025-06-08 15:17:14 - INFO - Using music: ./tracks/coma_4.mp3
+2025-06-08 15:17:24 - INFO - Writing video to: ./dist/final_20250608151724_1.mp4
+2025-06-08 15:22:53 - INFO - Successfully processed video: ./dist/final_20250608151724_1.mp4
+2025-06-08 15:22:53 - INFO - Processing video: ./sharks.mp4
+2025-06-08 15:22:53 - INFO - Using music: ./tracks/comatose_4.mp3
+2025-06-08 15:23:00 - INFO - Writing video to: ./dist/final_20250608152300_1.mp4
+2025-06-08 15:28:27 - INFO - Successfully processed video: ./dist/final_20250608152300_1.mp4

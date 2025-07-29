@@ -1,0 +1,17 @@
+2025-07-19 15:28:19 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-07-19 15:28:19 - INFO - Processing video: ./shiki.mp4
+2025-07-19 15:28:19 - INFO - Using music: ./tracks/4/blind_4.mp3
+2025-07-19 15:28:29 - INFO - Writing video to: ./dist/final_20250719152829_1.mp4
+2025-07-19 15:33:53 - INFO - Successfully processed video: ./dist/final_20250719152829_1.mp4
+2025-07-19 15:33:53 - INFO - Processing video: ./shiki.mp4
+2025-07-19 15:33:53 - INFO - Using music: ./tracks/4/blind_4.mp3
+2025-07-19 15:33:58 - INFO - Writing video to: ./dist/final_20250719153358_2.mp4
+2025-07-19 15:39:27 - INFO - Successfully processed video: ./dist/final_20250719153358_2.mp4
+2025-07-19 15:39:27 - INFO - Processing video: ./okarun_1.mp4
+2025-07-19 15:39:27 - INFO - Using music: ./tracks/4/cold_blodded_4.mp3
+2025-07-19 15:39:33 - INFO - Writing video to: ./dist/final_20250719153933_1.mp4
+2025-07-19 15:45:04 - INFO - Successfully processed video: ./dist/final_20250719153933_1.mp4
+2025-07-19 15:45:04 - INFO - Processing video: ./okarun_1.mp4
+2025-07-19 15:45:04 - INFO - Using music: ./tracks/4/cold_blodded_4.mp3
+2025-07-19 15:45:09 - INFO - Writing video to: ./dist/final_20250719154509_2.mp4
+2025-07-19 15:51:17 - INFO - Successfully processed video: ./dist/final_20250719154509_2.mp4

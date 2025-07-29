@@ -1,0 +1,9 @@
+2025-05-23 14:47:39 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-23 14:47:39 - INFO - Processing video: ./__mx__c35f904a-1044-40a0-9489-24399c46c32e.mp4
+2025-05-23 14:47:39 - INFO - Using music: ./tracks/4/crown_4.mp3
+2025-05-23 14:47:48 - INFO - Writing video to: ./dist/final_20250523144748_1.mp4
+2025-05-23 14:53:27 - INFO - Successfully processed video: ./dist/final_20250523144748_1.mp4
+2025-05-23 14:53:27 - INFO - Processing video: ./TV_2_2_PV_2025_7_3.mp4
+2025-05-23 14:53:27 - INFO - Using music: ./luna_bala_tiktok_version_slowed_-_yb_wasg_ood_ariis_edit_audio.mp4
+2025-05-23 14:53:35 - INFO - Writing video to: ./dist/final_20250523145335_1.mp4
+2025-05-23 14:59:10 - INFO - Successfully processed video: ./dist/final_20250523145335_1.mp4

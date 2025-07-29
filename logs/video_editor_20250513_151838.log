@@ -1,0 +1,13 @@
+2025-05-13 15:18:38 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-13 15:18:38 - INFO - Processing video: ./src/mix64.mp4
+2025-05-13 15:18:38 - INFO - Using music: ./tracks/fever_4.m4a
+2025-05-13 15:18:45 - INFO - Writing video to: ./dist/final_20250513151845_1.mp4
+2025-05-13 15:24:26 - INFO - Successfully processed video: ./dist/final_20250513151845_1.mp4
+2025-05-13 15:24:26 - INFO - Processing video: ./_fire.mp4
+2025-05-13 15:24:26 - INFO - Using music: ./tracks/coma_4.mp3
+2025-05-13 15:24:32 - INFO - Writing video to: ./dist/final_20250513152432_1.mp4
+2025-05-13 15:29:57 - INFO - Successfully processed video: ./dist/final_20250513152432_1.mp4
+2025-05-13 15:29:57 - INFO - Processing video: ./AMV_Lazarus_Trailer_-_Fe_n.mp4
+2025-05-13 15:29:57 - INFO - Using music: ./tracks/mvp_4.mp4
+2025-05-13 15:30:01 - INFO - Writing video to: ./dist/final_20250513153001_1.mp4
+2025-05-13 15:35:35 - INFO - Successfully processed video: ./dist/final_20250513153001_1.mp4

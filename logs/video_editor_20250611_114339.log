@@ -1,0 +1,5 @@
+2025-06-11 11:43:39 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-06-11 11:43:39 - INFO - Processing video: ./Kuma_Ginny_Join_the_Liberation_Army_One_Piece_AMV_I_Am_Here.mp4
+2025-06-11 11:43:39 - INFO - Using music: ./tracks/drag_me_down_4.mp3
+2025-06-11 11:43:50 - INFO - Writing video to: ./dist/final_20250611114350_1.mp4
+2025-06-11 11:52:17 - INFO - Successfully processed video: ./dist/final_20250611114350_1.mp4

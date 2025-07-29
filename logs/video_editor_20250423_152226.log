@@ -1,0 +1,9 @@
+2025-04-23 15:22:26 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-04-23 15:22:26 - INFO - Processing video: ./src/mix63.mp4
+2025-04-23 15:22:26 - INFO - Using music: ./tracks/4/tea_time_4.mp3
+2025-04-23 15:22:32 - INFO - Writing video to: ./dist/final_20250423152232_1.mp4
+2025-04-23 15:28:27 - INFO - Successfully processed video: ./dist/final_20250423152232_1.mp4
+2025-04-23 15:28:27 - INFO - Processing video: ./__vig.mp4
+2025-04-23 15:28:27 - INFO - Using music: ./tracks/4/only_one_4.mp3
+2025-04-23 15:28:31 - INFO - Writing video to: ./dist/final_20250423152831_1.mp4
+2025-04-23 15:34:06 - INFO - Successfully processed video: ./dist/final_20250423152831_1.mp4

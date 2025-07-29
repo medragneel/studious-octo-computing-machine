@@ -1,0 +1,5 @@
+2025-04-27 16:03:31 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-04-27 16:03:31 - INFO - Processing video: TV_2_1_PV_2025_7_3.mp4
+2025-04-27 16:03:31 - INFO - Using music: tracks\shine_4.mp3
+2025-04-27 16:03:38 - INFO - Writing video to: ./dist/final_20250427160338_1.mp4
+2025-04-27 16:09:18 - INFO - Successfully processed video: ./dist/final_20250427160338_1.mp4

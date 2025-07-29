@@ -1,0 +1,5 @@
+2025-07-20 22:50:56 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-07-20 22:50:56 - INFO - Processing video: ./Clevatess_AMV_Wish_You_Well.mp4
+2025-07-20 22:50:56 - INFO - Using music: ./tracks/paralyzed_4.mp3
+2025-07-20 22:51:08 - INFO - Writing video to: ./dist/final_20250720225108_1.mp4
+2025-07-20 22:56:24 - INFO - Successfully processed video: ./dist/final_20250720225108_1.mp4

@@ -1,0 +1,9 @@
+2025-05-17 20:35:53 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-17 20:35:53 - INFO - Processing video: ./Katainaka_no_Ossan_Kensei_ni_Naru_AMV_Careless_Surena.mp4
+2025-05-17 20:35:53 - INFO - Using music: ./tracks/4/letter_to_myself_4.mp3
+2025-05-17 20:36:06 - INFO - Writing video to: ./dist/final_20250517203606_1.mp4
+2025-05-17 20:43:09 - INFO - Successfully processed video: ./dist/final_20250517203606_1.mp4
+2025-05-17 20:43:09 - INFO - Processing video: ./Katainaka_no_Ossan_Kensei_ni_Naru_AMV_Careless_Surena.mp4
+2025-05-17 20:43:09 - INFO - Using music: ./tracks/4/letter_to_myself_4.mp3
+2025-05-17 20:43:18 - INFO - Writing video to: ./dist/final_20250517204318_2.mp4
+2025-05-17 20:50:12 - INFO - Successfully processed video: ./dist/final_20250517204318_2.mp4

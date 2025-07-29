@@ -1,0 +1,9 @@
+2025-05-12 18:25:11 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-12 18:25:11 - INFO - Processing video: ./devil_may_cry_1.mp4
+2025-05-12 18:25:11 - INFO - Using music: ./tracks/electrified_4_1.mp3
+2025-05-12 18:25:17 - INFO - Writing video to: ./dist/final_20250512182517_1.mp4
+2025-05-12 18:30:37 - INFO - Successfully processed video: ./dist/final_20250512182517_1.mp4
+2025-05-12 18:30:37 - INFO - Processing video: ./Sakura_vs_Takeru_Ren_Kaji_vs_Shingo_Natori_Wind_Breaker_S2_AMV_Signs.mp4
+2025-05-12 18:30:37 - INFO - Using music: ./tracks/river_4.mp3
+2025-05-12 18:30:42 - INFO - Writing video to: ./dist/final_20250512183042_1.mp4
+2025-05-12 18:36:11 - INFO - Successfully processed video: ./dist/final_20250512183042_1.mp4

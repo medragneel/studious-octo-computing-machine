@@ -1,0 +1,33 @@
+2025-05-24 15:37:05 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-24 15:37:05 - INFO - Processing video: ./__mx__fb1e120c-4661-4fb7-a65e-71cbd037f18e.mp4
+2025-05-24 15:37:05 - INFO - Using music: ./tracks/dreamer_4.mp3
+2025-05-24 15:37:15 - INFO - Writing video to: ./dist/final_20250524153715_1.mp4
+2025-05-24 15:42:18 - INFO - Successfully processed video: ./dist/final_20250524153715_1.mp4
+2025-05-24 15:42:18 - INFO - Processing video: ./__mx__fb1e120c-4661-4fb7-a65e-71cbd037f18e.mp4
+2025-05-24 15:42:18 - INFO - Using music: ./tracks/dreamer_4.mp3
+2025-05-24 15:42:24 - INFO - Writing video to: ./dist/final_20250524154224_2.mp4
+2025-05-24 15:48:26 - INFO - Successfully processed video: ./dist/final_20250524154224_2.mp4
+2025-05-24 15:48:26 - INFO - Processing video: ./__mx__fb1e120c-4661-4fb7-a65e-71cbd037f18e.mp4
+2025-05-24 15:48:26 - INFO - Using music: ./tracks/dreamer_4.mp3
+2025-05-24 15:48:34 - INFO - Writing video to: ./dist/final_20250524154834_3.mp4
+2025-05-24 15:54:36 - INFO - Successfully processed video: ./dist/final_20250524154834_3.mp4
+2025-05-24 15:54:36 - INFO - Processing video: ./__mx__fb1e120c-4661-4fb7-a65e-71cbd037f18e.mp4
+2025-05-24 15:54:36 - INFO - Using music: ./tracks/dreamer_4.mp3
+2025-05-24 15:54:44 - INFO - Writing video to: ./dist/final_20250524155444_4.mp4
+2025-05-24 16:00:54 - INFO - Successfully processed video: ./dist/final_20250524155444_4.mp4
+2025-05-24 16:00:54 - INFO - Processing video: ./src/wind_breaker_13.mp4
+2025-05-24 16:00:54 - INFO - Using music: ./tracks/last_resort_4.mp3
+2025-05-24 16:01:00 - INFO - Writing video to: ./dist/final_20250524160100_1.mp4
+2025-05-24 18:09:02 - INFO - Successfully processed video: ./dist/final_20250524160100_1.mp4
+2025-05-24 18:09:02 - INFO - Processing video: ./src/wind_breaker_13.mp4
+2025-05-24 18:09:02 - INFO - Using music: ./tracks/last_resort_4.mp3
+2025-05-24 18:09:11 - INFO - Writing video to: ./dist/final_20250524180911_2.mp4
+2025-05-24 18:14:29 - INFO - Successfully processed video: ./dist/final_20250524180911_2.mp4
+2025-05-24 18:14:29 - INFO - Processing video: ./src/wind_breaker_13.mp4
+2025-05-24 18:14:29 - INFO - Using music: ./tracks/last_resort_4.mp3
+2025-05-24 18:14:35 - INFO - Writing video to: ./dist/final_20250524181435_3.mp4
+2025-05-24 18:20:41 - INFO - Successfully processed video: ./dist/final_20250524181435_3.mp4
+2025-05-24 18:20:41 - INFO - Processing video: ./src/wind_breaker_13.mp4
+2025-05-24 18:20:41 - INFO - Using music: ./tracks/last_resort_4.mp3
+2025-05-24 18:20:47 - INFO - Writing video to: ./dist/final_20250524182047_4.mp4
+2025-05-24 18:26:00 - INFO - Successfully processed video: ./dist/final_20250524182047_4.mp4

@@ -1,0 +1,5 @@
+2025-05-28 15:01:24 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-05-28 15:01:24 - INFO - Processing video: ./fire_force_.mp4
+2025-05-28 15:01:24 - INFO - Using music: ./tracks/electrified_4.mp3
+2025-05-28 15:01:31 - INFO - Writing video to: ./dist/final_20250528150131_1.mp4
+2025-05-28 15:07:21 - INFO - Successfully processed video: ./dist/final_20250528150131_1.mp4

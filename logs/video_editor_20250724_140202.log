@@ -1,0 +1,5 @@
+2025-07-24 14:02:02 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-07-24 14:02:02 - INFO - Processing video: ./src/edited_[Erai-raws] Gachiakuta - 02 [1080p CR WEB-DL AVC AAC][MultiSub][5D50D89A]_.mp4
+2025-07-24 14:02:02 - INFO - Using music: ./tracks/die_a_king_4.mp3
+2025-07-24 14:02:12 - INFO - Writing video to: ./dist/final_20250724140212_1.mp4
+2025-07-24 14:08:24 - INFO - Successfully processed video: ./dist/final_20250724140212_1.mp4

@@ -1,0 +1,5 @@
+2025-06-14 18:29:37 - INFO - ImageMagick path set to: C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\magick.exe
+2025-06-14 18:29:37 - INFO - Processing video: ./TV_2_2_PV_2025_7_3.mp4
+2025-06-14 18:29:37 - INFO - Using music: ./tracks/4/revenant_4.mp3
+2025-06-14 18:29:44 - INFO - Writing video to: ./dist/final_20250614182944_1.mp4
+2025-06-14 18:34:58 - INFO - Successfully processed video: ./dist/final_20250614182944_1.mp4
